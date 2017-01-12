@@ -1,0 +1,22 @@
+
+---
+type: service_template
+subtype: workflow
+name: golang-checkout-build
+description: Checkout then build.
+inputs:
+  parameters:
+    commit:
+      default: "%%session.commit%%"
+    repo:
+      default: "%%session.repo%%"
+    command:
+      description: The command to run in the build step, e.g. go build ...
+steps:
+  - checkout:
+      template: axscm-checkout
+  - build:
+      template: golang
+      parameters:
+        checkout_artifact: "%%steps.checkout.code%%"
+        image_tag: "1.7.4"

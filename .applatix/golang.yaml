@@ -1,0 +1,27 @@
+---
+type: service_template
+subtype: container
+name: golang
+description: Base container for golang environment
+container:
+  resources:
+    mem_mib: 1024
+    cpu_cores: 0.2
+  image: golang:%%image_tag%%
+  command: cd /go/src/%%package_path%% && go get -t -v ./... && %%command%%
+inputs:
+  artifacts:
+  - from: "%%checkout_artifact%%"
+    path: "/go/src/%%package_path%%"
+  parameters:
+    command:
+      description: The command to be run inside the container.
+    checkout_artifact:
+      description: The src artifact coming from code checkout.
+    image_tag:
+      description: The golang docker image tag, e.g. 1.7.4. Default to latest
+      default: latest
+    package_path:
+      description: Path under GOPATH/src that we should put your source code, e.g. github.com/blevesearch/bleve
+labels:
+    "ax_ea_docker_enable": "{ \"graph-storage-name\": \"axbuildstorage\", \"graph-storage-size\": \"90Gi\" }"

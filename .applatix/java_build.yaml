@@ -1,0 +1,22 @@
+
+---
+type: service_template
+subtype: workflow
+name: java-checkout-build
+description: Checkout then build.
+inputs:
+  parameters:
+    commit:
+      default: "%%session.commit%%"
+    repo:
+      default: "%%session.repo%%"
+    command:
+      description: The command to run in the build step, e.g. mvn 
+steps:
+  - checkout:
+      template: axscm-checkout
+  - build:
+      template: java
+      parameters:
+        checkout_artifact: "%%steps.checkout.code%%"
+        image_tag: "openjdk-8-jdk"
