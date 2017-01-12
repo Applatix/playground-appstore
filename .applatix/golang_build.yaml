@@ -12,6 +12,8 @@ inputs:
       default: "%%session.repo%%"
     command:
       description: The command to run in the build step, e.g. go build ...
+    package_path:
+      description: Path under GOPATH/src that we should put your source code, e.g. github.com/blevesearch/bleve
 steps:
   - checkout:
       template: axscm-checkout
