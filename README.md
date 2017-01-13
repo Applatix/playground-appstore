@@ -10,3 +10,5 @@ This is the Applatix App Store repo. It contains
 
 * [Golang](golang/README.md)
 * [Java](java/README.md)
+* [Nodejs](nodejs/README.md)
+* [Python](python/README.md)

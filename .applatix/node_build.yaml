@@ -1,0 +1,23 @@
+---
+type: service_template
+subtype: workflow
+name: "node-checkout-build"
+description: "Checkout then build"
+inputs:
+  parameters:
+    commit:
+      default: "%%session.commit%%"
+    repo:
+      default: "%%session.repo%%"
+outputs:
+  artifacts:
+    CODE:
+      from: "%%steps.checkout.code%%"
+steps:
+- checkout:
+    template: "axscm-checkout"
+- build:
+    template: "node"
+    parameters:
+      CMD: "sh -c 'cd /src && npm set progress=false && npm install --unsafe-perm && npm run build:prod'"
+      checkout_artifact: "%%steps.checkout.code%%"
