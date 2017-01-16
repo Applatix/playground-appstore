@@ -2,8 +2,8 @@
 ---
 type: service_template
 subtype: workflow
-name: python-checkout-build
-description: Checkout then build.
+name: python-checkout-test
+description: Checkout then test.
 inputs:
   parameters:
     commit:
@@ -11,11 +11,11 @@ inputs:
     repo:
       default: "%%session.repo%%"
     command:
-      description: The command to run in the build step, e.g. python /src/myscript.py 
+      description: The command to run in the test step, e.g. python /src/myscript.py 
 steps:
   - checkout:
       template: axscm-checkout
-  - build:
+  - test:
       template: python
       parameters:
         checkout_artifact: "%%steps.checkout.code%%"
