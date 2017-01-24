@@ -1,27 +1,6 @@
 ---
 type: service_template
 subtype: container
-name: mysql_server
-description: mysql server
-container:
-  resources:
-    mem_mib: 1024
-    cpu_cores: 0.2
-  image: "mysql:%%image_tag%%"
-  docker_options: "-e MYSQL_ROOT_PASSWORD=%%root_password%%"
-inputs:
-  parameters:
-    image_tag:
-      description: mysql docker image tag, e.g. 8.0.0. Default to latest
-      default: latest
-    root_password:
-      description: password for mysql root user
-outputs:
-
-
----
-type: service_template
-subtype: container
 name: mysql_client
 description: mysql client
 container:
@@ -50,8 +29,6 @@ inputs:
       description: script to execute
 outputs:
 
-
-
 ---
 type: service_template
 subtype: workflow
@@ -63,6 +40,8 @@ inputs:
       default: "%%session.commit%%"
     repo:
       default: "%%session.repo%%"
+    script:
+      default: "/src/showdb.sql"  
 fixtures:
   - mysql_remote:
       template: mysql_server
