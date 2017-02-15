@@ -8,7 +8,7 @@ actions:
     template: mysql server test
     parameters:
             repo: "https://github.com/Applatix/appstore.git"
-            commit: "f2abe358b14452856c5bf856e63e5edc59259531"
+            commit: "e29489171f7ab81b7a1140cab3460d644f746fb1"
             script: "/mysql/script/showdb.sql"
 categories: ["database"]
 publish:
