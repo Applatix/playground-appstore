@@ -27,7 +27,9 @@ inputs:
       description: password for the mysql server
     script:
       description: script to execute
-outputs:
+    outputs:
+
+
 
 ---
 type: service_template
@@ -40,8 +42,9 @@ inputs:
       default: "%%session.commit%%"
     repo:
       default: "%%session.repo%%"
-    script:
-      default: "/src/showdb.sql"  
+    script: 
+      default: "/mysql/scripts/showdb.sql"
+      description: script to execute     
 fixtures:
   - mysql_remote:
       template: mysql_server
@@ -59,4 +62,4 @@ steps:
         user: "root"
         password: "server"
         code: "%%steps.checkout.code%%"
-        script: "/showdb.sql"
+     

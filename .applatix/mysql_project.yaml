@@ -1,0 +1,22 @@
+---
+type: project
+name: mysql project
+description: mysql project
+actions:
+  -
+    name: test
+    template: mysql server test
+    parameters:
+            repo: "https://github.com/Applatix/appstore.git"
+            commit: "f2abe358b14452856c5bf856e63e5edc59259531"
+            script: "/mysql/script/showdb.sql"
+categories: ["database"]
+publish:
+  branches:
+    - master
+labels:
+    tags: "[\"database\"]"
+assets:
+    icon: "https://github.com/Applatix/appstore/blob/master/mysql/mysql.png"
+    overview: "https://github.com/Applatix/appstore/blob/master/mysql/README.md"
+    detail: "https://github.com/Applatix/appstore/blob/master/mysql/README.md"
