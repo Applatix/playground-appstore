@@ -18,5 +18,5 @@ labels:
     tags: "[\"database\"]"
 assets:
     icon: "https://raw.githubusercontent.com/Applatix/appstore/master/mysql/mysql.png"
-    overview: "https://github.com/Applatix/appstore/raw/master/mysql/README.md"
-    detail: "https://github.com/Applatix/appstore/raw/master/mysql/README.md"
+    overview: "https://raw.githubusercontent.com/Applatix/appstore/master/mysql/README.md"
+    detail: "https://raw.githubusercontent.com/Applatix/appstore/master/mysql/README.md"
