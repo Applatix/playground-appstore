@@ -5,7 +5,7 @@ description: mysql project
 actions:
   -
     name: test
-    template: mysql server test
+    template: Mysql Server test
     parameters:
             repo: "https://github.com/Applatix/appstore.git"
             commit: "e29489171f7ab81b7a1140cab3460d644f746fb1"

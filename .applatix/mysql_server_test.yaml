@@ -27,7 +27,7 @@ inputs:
       description: password for the mysql server
     script:
       description: script to execute
-    outputs:
+outputs:
 
 
 
