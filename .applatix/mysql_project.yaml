@@ -17,6 +17,6 @@ publish:
 labels:
     tags: "[\"database\"]"
 assets:
-    icon: "https://github.com/Applatix/appstore/blob/master/mysql/mysql.png"
+    icon: "https://raw.githubusercontent.com/Applatix/appstore/master/mysql/mysql.png"
     overview: "https://github.com/Applatix/appstore/blob/master/mysql/README.md"
     detail: "https://github.com/Applatix/appstore/blob/master/mysql/README.md"
