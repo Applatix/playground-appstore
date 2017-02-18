@@ -8,7 +8,7 @@ actions:
     template: Selenium Standalone Test All AX Images
     parameters:
             repo: "https://github.com/Applatix/appstore.git"
-            commit: 6ba0dc359993a918ab64b3d559d33a4b7476a497
+            commit: 2948c3a87c1b97ab87f36de7590e09e77f6b3237
 categories: ["test", "promoted"]
 publish:
   branches:
