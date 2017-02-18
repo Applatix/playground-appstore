@@ -1,0 +1,21 @@
+---
+type: project
+name: selenium test project
+description: selenium test project
+actions:
+  -
+    name: launch
+    template: Selenium Standalone Test All AX Images
+    parameters:
+            repo: "https://github.com/Applatix/appstore.git"
+            commit: d6144d8d5e1a0152c4e4d532c2f24f8f88fb1b57
+categories: ["test", "promoted"]
+publish:
+  branches:
+    - master
+labels:
+    tags: "[\"test\"]"
+assets:
+    icon: "https://raw.githubusercontent.com/Applatix/appstore/master/mongo/mongo.png"
+    overview: "https://raw.githubusercontent.com/Applatix/appstore/master/mongo/README.md"
+    detail: "https://raw.githubusercontent.com/Applatix/appstore/master/mongo/README.md"

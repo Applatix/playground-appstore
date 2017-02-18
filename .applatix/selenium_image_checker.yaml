@@ -1,0 +1,60 @@
+---
+type: service_template
+subtype: container
+name: selenium_server_dynamic
+description: Base selenium container for selenium
+container:
+  resources:
+    mem_mib: 1024
+    cpu_cores: 0.1
+  image: "applatix/%%image%%:latest"
+inputs:
+  parameters:
+    image:
+outputs:
+
+---
+type: service_template
+subtype: container
+name: selenium-test-simple
+description: Base selenium test container
+container:
+  resources:
+    mem_mib: 1024
+    cpu_cores: 0.1
+  image: "python:3.5.2"
+  command: sh -c 'pip3 install selenium && pip3 install pytest && pytest -vv /src/selenium_simple_test.py --remote %%selenium_ip%% --browser %%image%% --capture=no'
+inputs:
+  artifacts:
+  - from: "%%code%%"
+    path: "/src"
+  parameters:
+    code:
+    image:
+    selenium_ip:
+outputs:
+
+---
+type: service_template
+subtype: workflow
+name: Selenium Image Checker
+description: This is the workflow to verify selenium image
+fixtures:
+  - selenium_remote:
+      template: selenium_server_dynamic
+inputs:
+  parameters:
+    commit:
+      default: "%%session.commit%%"
+    repo:
+      default: "%%session.repo%%"
+    image:
+      default: "ubuntu1604-chromelatest"
+steps:
+  - checkout:
+      template: axscm-checkout
+  - check:
+      template: selenium-test-simple
+      parameters:
+        code: "%%steps.checkout.code%%"
+        selenium_ip: "%%fixtures.selenium_remote.ip%%"

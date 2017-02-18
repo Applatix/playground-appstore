@@ -1,0 +1,42 @@
+---
+type: service_template
+subtype: container
+name: vnc-recorder
+description: Base VNC recorder container
+container:
+  resources:
+    mem_mib: 1024
+    cpu_cores: 0.1
+  image: get.applatix.io/applatix/axvncrecorder:v1
+  docker_options: "-e host=%%remote%% -e output=%%output%%"
+inputs:
+    parameters:
+      remote:
+      output:
+outputs:
+  artifacts:
+    video:
+      path: "/tmp/video.flv"
+
+---
+type: service_template
+subtype: container
+name: axvideo-converter
+description: Convert FLV to MPEG
+container:
+  resources:
+    mem_mib: 1024
+    cpu_cores: 0.1
+  image: get.applatix.io/applatix/axvncrecorder:latest
+  command: "ffmpeg -ss 00:01:00 -i /tmp/video.flv -c:v mpeg2video %%output%%"
+inputs:
+  artifacts:
+  - from: "%%input%%"
+    path: "/tmp"
+  parameters:
+    input:
+    output:
+outputs:
+  artifacts:
+    video:
+      path: "%%output%%"

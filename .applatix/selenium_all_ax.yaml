@@ -1,0 +1,81 @@
+---
+type: service_template
+subtype: container
+name: selenium-server-ax
+description: Base selenium container for selenium firefox and chrome
+container:
+  resources:
+    mem_mib: 1024
+    cpu_cores: 0.1
+  image: "applatix/%%os%%-%%browser%%:latest"
+inputs:
+  parameters:
+    os:
+    browser:
+outputs:
+
+---
+type: service_template
+subtype: container
+name: selenium-test-base-ax
+description: Base selenium test container
+container:
+  resources:
+    mem_mib: 1024
+    cpu_cores: 0.1
+  image: "python:3.5.2"
+  command: sh -c 'pip3 install selenium && pip3 install pytest && pytest -vv /src/selenium_standalone_test.py --remote %%selenium_ip%% --browser %%browser%% --capture=no'
+inputs:
+  artifacts:
+  - from: "%%code%%"
+    path: "/src"
+  parameters:
+    code:
+    browser:
+    selenium_ip:
+outputs:
+  artifacts:
+    screenshot:
+      path: "/src/screenshot"
+
+---
+type: service_template
+subtype: workflow
+name: Selenium Standalone Test One AX
+description: This is the workflow for senlenium test to AX images
+fixtures:
+  - selenium_remote:
+      template: selenium-server-ax
+      parameters:
+inputs:
+  parameters:
+    os:
+    browser:
+    code:
+steps:
+  - test:
+      template: selenium-test-base-ax
+      parameters:
+        selenium_ip: "%%fixtures.selenium_remote.ip%%"
+
+---
+type: service_template
+subtype: workflow
+name: Selenium Standalone Test All AX Images
+description: This is the workflow for senlenium test
+inputs:
+  parameters:
+    commit:
+      default: "%%session.commit%%"
+    repo:
+      default: "%%session.repo%%"
+steps:
+  - checkout:
+      template: axscm-checkout
+  - test:
+      template: Selenium Standalone Test One AX
+      parameters:
+        code: "%%steps.checkout.code%%"
+        os: $$[ubuntu1604,ubuntu1404]$$
+        browser: $$[chromelatest,chrome54,chrome53,chrome52,chrome51,chrome50,chrome49,firefoxlatest,firefox50,firefox49,firefox48,firefox47,firefox46,firefox45]$$
+        selenium_ip: "%%fixtures.selenium_remote.ip%%"
