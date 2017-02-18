@@ -7,16 +7,16 @@ actions:
     name: test
     template: Mysql Server test
     parameters:
-            repo: "https://github.com/Applatix/appstore.git"
-            commit: "e29489171f7ab81b7a1140cab3460d644f746fb1"
-            script: "/mysql/script/showdb.sql"
+      repo: "https://github.com/Applatix/appstore.git"
+      commit: "e29489171f7ab81b7a1140cab3460d644f746fb1"
+      script: "/mysql/script/showdb.sql"
 categories: ["database", "promoted"]
 publish:
   branches:
     - master
 labels:
-    tags: "[\"database\"]"
+  tags: "[\"database\"]"
 assets:
-    icon: "https://raw.githubusercontent.com/Applatix/appstore/master/mysql/mysql.png"
-    overview: "https://raw.githubusercontent.com/Applatix/appstore/master/mysql/README.md"
-    detail: "https://raw.githubusercontent.com/Applatix/appstore/master/mysql/README.md"
+  icon: "https://raw.githubusercontent.com/Applatix/appstore/master/mysql/mysql.png"
+  overview: "https://raw.githubusercontent.com/Applatix/appstore/master/mysql/README.md"
+  detail: "https://raw.githubusercontent.com/Applatix/appstore/master/mysql/README.md"

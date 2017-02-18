@@ -1,0 +1,22 @@
+---
+type: project
+name: mongo project
+description: mongo project
+actions:
+  -
+    name: test
+    template: mongo server test
+    parameters:
+            repo: "https://github.com/Applatix/appstore.git"
+            commit: 
+            script: "/mongo/scripts/showdb.sql"
+categories: ["database", "promoted"]
+publish:
+  branches:
+    - master
+labels:
+    tags: "[\"database\"]"
+assets:
+    icon: "https://raw.githubusercontent.com/Applatix/appstore/master/mongo/mongo.png"
+    overview: "https://raw.githubusercontent.com/Applatix/appstore/master/mongo/README.md"
+    detail: "https://raw.githubusercontent.com/Applatix/appstore/master/mongo/README.md"
