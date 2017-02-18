@@ -16,6 +16,6 @@ publish:
 labels:
     tags: "[\"test\"]"
 assets:
-    icon: "https://raw.githubusercontent.com/Applatix/appstore/master/mongo/mongo.png"
-    overview: "https://raw.githubusercontent.com/Applatix/appstore/master/mongo/README.md"
-    detail: "https://raw.githubusercontent.com/Applatix/appstore/master/mongo/README.md"
+    icon: "https://raw.githubusercontent.com/Applatix/appstore/master/selenium/selenium.png"
+    overview: "https://raw.githubusercontent.com/Applatix/appstore/master/selenium/README.md"
+    detail: "https://raw.githubusercontent.com/Applatix/appstore/master/selenium/README.md"
