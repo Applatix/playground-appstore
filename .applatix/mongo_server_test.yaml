@@ -35,7 +35,7 @@ inputs:
     repo:
       default: "%%session.repo%%"
     script: 
-      default: "/mongo/scripts/showdb.sql"
+      default: "/mongo/scripts/showdb.js"
       description: script to execute     
 fixtures:
   - mongo_remote:
