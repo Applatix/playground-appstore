@@ -8,7 +8,7 @@ actions:
     template: mongo server test
     parameters:
             repo: "https://github.com/Applatix/appstore.git"
-            commit: 3b627c7f9958bc121d85068ceca42d0731f1b351
+            commit: acd25eace718288e997ec3d6f054725a71949328
             script: "/mongo/scripts/showdb.js"
 categories: ["database", "promoted"]
 publish:
