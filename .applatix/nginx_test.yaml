@@ -1,0 +1,38 @@
+---
+type: service_template
+subtype: container
+name: nginx_test_client
+description: nginx test client
+container:
+  resources:
+    mem_mib: 1024
+    cpu_cores: 0.2
+  image: "ubuntu:%%image_tag%%"
+  command: sh -c 'apt-get update && apt-get install -y wget && wget %%host_ip%%''
+inputs:
+  parameters:
+    image_tag:
+      description: ubuntu docker image tag, e.g. 3.0.0. Default to latest
+      default: latest
+    host_ip:
+      description: ip of the nginx server to connect
+
+---
+type: service_template
+subtype: workflow
+name: nginx server test
+description: This is the workflow for nginx server test
+inputs:
+  parameters:
+fixtures:
+  - nginx_remote:
+      template: nginx_server
+      parameters:
+        image_tag: 1.11.10
+steps:
+  - test:
+      template: nginx_test_client
+      parameters:
+        image_tag: 12.04.5
+        host_ip: "%%fixtures.nginx_remote.ip%%"
+     
