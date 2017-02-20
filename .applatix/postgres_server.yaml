@@ -1,0 +1,19 @@
+---
+type: service_template
+subtype: container
+name: postgres_server
+description: postgres server
+container:
+  resources:
+    mem_mib: 1024
+    cpu_cores: 0.2
+  image: "postgres:%%image_tag%%"
+  docker_options: "-e POSTGRES_PASSWORD=%%root_password%%"
+inputs:
+  parameters:
+    image_tag:
+      description: postgres docker image tag, e.g. 9.2.20. Default to latest
+      default: latest
+    root_password:
+      description: password for postgres root user
+outputs:

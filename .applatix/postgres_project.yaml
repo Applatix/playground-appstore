@@ -1,0 +1,22 @@
+---
+type: project
+name: postgres project
+description: postgres project
+actions:
+  -
+    name: test
+    template: Postgres Server test
+    parameters:
+      repo: "https://github.com/Applatix/appstore.git"
+      commit: 3b627c7f9958bc121d85068ceca42d0731f1b351
+      script: "/postgres/script/showdb.sql"
+categories: ["database", "promoted"]
+publish:
+  branches:
+    - master
+labels:
+  tags: "[\"database\"]"
+assets:
+  icon: "https://raw.githubusercontent.com/Applatix/appstore/master/postgres/postgres.png"
+  overview: "https://raw.githubusercontent.com/Applatix/appstore/master/postgres/README.md"
+  detail: "https://raw.githubusercontent.com/Applatix/appstore/master/postgres/README.md"
