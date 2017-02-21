@@ -22,8 +22,6 @@ type: service_template
 subtype: workflow
 name: nginx server test
 description: This is the workflow for nginx server test
-inputs:
-  parameters:
 fixtures:
   - nginx_remote:
       template: nginx_server
