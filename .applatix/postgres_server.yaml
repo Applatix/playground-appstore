@@ -16,4 +16,3 @@ inputs:
       default: latest
     root_password:
       description: password for postgres root user
-outputs:
