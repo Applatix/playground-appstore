@@ -60,5 +60,5 @@ steps:
         host_ip: "%%fixtures.postgres_remote.ip%%"
         user: "postgres"
         password: "server"
-        script: "%%steps.checkout.code%%"
+        code: "%%steps.checkout.code%%"
      
