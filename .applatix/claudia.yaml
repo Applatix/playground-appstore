@@ -1,0 +1,157 @@
+---
+type: service_template
+subtype: workflow
+name: claudia-workflow
+inputs:
+  parameters:
+    commit:
+      default: "%%session.commit%%"
+    repo:
+      default: "%%session.repo%%"
+    version:
+      default: "latest"
+    domain:
+      default: "applatix.net"
+steps:
+  - userdb:
+      template: claudia-userdb
+    costdb:
+      template: claudia-costdb
+    ingestd:
+      template: claudia-ingestd
+      parameters:
+        version:
+    claudiad:
+      template: claudia-server
+      parameters:
+        version:
+
+---
+type: service_template
+subtype: deployment
+name: claudia-server
+application:
+  name: "claudia"
+deployment:
+  name: "claudia-server"
+external_routes:
+  - name: "claudia-server"
+    dns_prefix: "claudia"
+    target_port: 443
+    redirect_http_to_https: true
+    ip_white_list:
+      - 0.0.0.0/0
+containers:
+  - claudiad:
+      template: claudia-server-container
+inputs:
+  parameters:
+    version:
+
+---
+type: service_template
+subtype: deployment
+name: claudia-ingestd
+application:
+  name: "claudia"
+deployment:
+  name: "claudia-ingestd"
+internal_routes:
+  - name: "ingestd"
+    ports:
+      - name: ingestd
+        port: 8081
+        target_port: 8081
+containers:
+  - ingestd:
+      template: claudia-ingestd-container
+inputs:
+  parameters:
+    version:
+
+---
+type: service_template
+subtype: deployment
+name: claudia-userdb
+application:
+  name: "claudia"
+deployment:
+  name: "claudia-userdb"
+internal_routes:
+  - name: "userdb"
+    ports:
+      - name: postgres
+        port: 5432
+        target_port: 5432
+containers:
+  - userdb:
+      template: claudia-userdb-container
+
+---
+type: service_template
+subtype: deployment
+name: claudia-costdb
+application:
+  name: "claudia"
+deployment:
+  name: "claudia-costdb"
+internal_routes:
+  - name: "costdb"
+    ports:
+      - name: influxdb
+        port: 8086
+        target_port: 8086
+containers:
+  - costdb:
+      template: claudia-costdb-container
+
+---
+type: service_template
+subtype: container
+name: claudia-userdb-container
+container:
+  resources:
+    mem_mib: 256
+    cpu_cores: 0.1
+  image: "postgres:9.6.1"
+  docker_options: -e POSTGRES_PASSWORD=my-secret-pw -e POSTGRES_DB=userdb
+
+---
+type: service_template
+subtype: container
+name: claudia-costdb-container
+container:
+  resources:
+    mem_mib: 4096
+    cpu_cores: 0.1
+  image: "influxdb:1.2.0"
+  docker_options: -e INFLUXDB_HTTP_MAX_ROW_LIMIT=40000 -e INFLUXDB_REPORTING_DISABLED=true
+
+---
+type: service_template
+subtype: container
+name: claudia-ingestd-container
+container:
+  resources:
+    mem_mib: 512
+    cpu_cores: 0.1
+  image: "get.applatix.io/claudia:%%version%%"
+  command: "/usr/bin/ingestd run"
+  docker_options: -e POSTGRES_PASSWORD=my-secret-pw -e POSTGRES_DB=userdb
+inputs:
+  parameters:
+    version:
+
+---
+type: service_template
+subtype: container
+name: claudia-server-container
+container:
+  resources:
+    mem_mib: 512
+    cpu_cores: 0.1
+  image: "get.applatix.io/claudia:%%version%%"
+  docker_options: -e POSTGRES_PASSWORD=my-secret-pw -e POSTGRES_DB=userdb
+inputs:
+  parameters:
+    version:
