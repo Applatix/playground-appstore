@@ -6,7 +6,7 @@ actions:
   -
     name: run
     template: claudia-workflow
-categories: ["aws", "monitoring", "promoted"]
+categories: ["monitoring", "promoted"]
 publish:
   branches:
     - master

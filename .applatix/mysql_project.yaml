@@ -8,7 +8,7 @@ actions:
     template: Mysql Server test
     parameters:
       script: "/mysql/script/showdb.sql"
-categories: ["database", "promoted"]
+categories: ["database"]
 publish:
   branches:
     - master

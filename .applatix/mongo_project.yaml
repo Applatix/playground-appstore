@@ -10,7 +10,7 @@ actions:
             repo: "https://github.com/Applatix/appstore.git"
             commit: acd25eace718288e997ec3d6f054725a71949328
             script: "/mongo/scripts/showdb.js"
-categories: ["database", "promoted"]
+categories: ["database"]
 publish:
   branches:
     - master
