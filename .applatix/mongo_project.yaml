@@ -15,8 +15,7 @@ publish:
   branches:
     - master
 labels:
-    tags: "[\"database\"]"
+    tags: "[\"nosql\"]"
 assets:
-    icon: "https://raw.githubusercontent.com/Applatix/appstore/master/mongo/mongo.png"
-    overview: "https://raw.githubusercontent.com/Applatix/appstore/master/mongo/README.md"
-    detail: "https://raw.githubusercontent.com/Applatix/appstore/master/mongo/README.md"
+    icon: "/mongo/mongo.png"
+    detail: "/mongo/README.md"

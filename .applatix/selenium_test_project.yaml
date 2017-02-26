@@ -8,7 +8,6 @@ actions:
     template: Selenium Standalone Test All AX Images
     parameters:
             repo: "https://github.com/Applatix/appstore.git"
-            commit: 705e06ea8b5c51d16090cb071377ef9c933beaa5
 categories: ["test", "promoted"]
 publish:
   branches:
@@ -16,6 +15,6 @@ publish:
 labels:
     tags: "[\"test\"]"
 assets:
-    icon: "https://raw.githubusercontent.com/Applatix/appstore/master/selenium/selenium.png"
-    overview: "https://raw.githubusercontent.com/Applatix/appstore/master/selenium/README.md"
-    detail: "https://raw.githubusercontent.com/Applatix/appstore/master/selenium/README.md"
+    icon: "/selenium/selenium.png"
+    overview: "/selenium/README.md"
+    detail: "/selenium/README.md"

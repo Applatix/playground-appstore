@@ -1,18 +1,17 @@
 ---
 type: project
 name: nginx project
-description: nginx project
+description: popular reverse proxy
 actions:
   -
     name: test
     template: nginx server test
-categories: ["web server","reverse proxy", "promoted"]
+categories: ["reverse proxy"]
 publish:
   branches:
     - master
 labels:
     tags: "[\"reverse proxy\"]"
 assets:
-    icon: "https://raw.githubusercontent.com/Applatix/appstore/master/nginx/nginx.png"
-    overview: "https://raw.githubusercontent.com/Applatix/appstore/master/nginx/README.md"
-    detail: "https://raw.githubusercontent.com/Applatix/appstore/master/nginx/README.md"
+    icon: "/nginx/nginx.png"
+    detail: "/nginx/README.md"

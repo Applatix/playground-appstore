@@ -13,6 +13,6 @@ publish:
 labels:
     tags: "[\"aws\"]"
 assets:
-    icon: "https://raw.githubusercontent.com/Applatix/appstore/master/claudia/icon.png"
-    overview: "https://raw.githubusercontent.com/Applatix/appstore/master/claudia/overview.md"
-    detail: "https://raw.githubusercontent.com/Applatix/appstore/master/claudia/detail.md"
+    icon: "/claudia/icon.png"
+    overview: "/claudia/overview.md"
+    detail: "/claudia/detail.md"

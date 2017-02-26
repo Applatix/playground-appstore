@@ -1,7 +1,7 @@
 ---
 type: project
 name: postgres project
-description: postgres project
+description: popular sql database
 actions:
   -
     name: test
@@ -10,13 +10,12 @@ actions:
       repo: "https://github.com/Applatix/appstore.git"
       commit: 607971d5a5081c2e1784e185764a782bf7358fe8
       script: "/postgres/script/showdb.sql"
-categories: ["database", "promoted"]
+categories: ["database"]
 publish:
   branches:
     - master
 labels:
-  tags: "[\"database\"]"
+  tags: "[\"sql\"]"
 assets:
-  icon: "https://raw.githubusercontent.com/Applatix/appstore/master/postgres/postgres.png"
-  overview: "https://raw.githubusercontent.com/Applatix/appstore/master/postgres/README.md"
-  detail: "https://raw.githubusercontent.com/Applatix/appstore/master/postgres/README.md"
+  icon: "/postgres/postgres.png"
+  detail: "/postgres/README.md"

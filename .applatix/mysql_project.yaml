@@ -1,22 +1,19 @@
 ---
 type: project
 name: mysql project
-description: mysql project
+description: popular sql database
 actions:
   -
     name: test
     template: Mysql Server test
     parameters:
-      repo: "https://github.com/Applatix/appstore.git"
-      commit: 3b627c7f9958bc121d85068ceca42d0731f1b351
       script: "/mysql/script/showdb.sql"
 categories: ["database", "promoted"]
 publish:
   branches:
     - master
 labels:
-  tags: "[\"database\"]"
+  tags: "[\"sql\"]"
 assets:
-  icon: "https://raw.githubusercontent.com/Applatix/appstore/master/mysql/mysql.png"
-  overview: "https://raw.githubusercontent.com/Applatix/appstore/master/mysql/README.md"
-  detail: "https://raw.githubusercontent.com/Applatix/appstore/master/mysql/README.md"
+  icon: "/mysql/mysql.png"
+  detail: "/mysql/README.md"

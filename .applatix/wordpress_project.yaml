@@ -13,6 +13,6 @@ publish:
 labels:
     tags: "[\"cms\"]"
 assets:
-    icon: "https://raw.githubusercontent.com/Applatix/appstore/master/wordpress/icon.png"
-    overview: "https://raw.githubusercontent.com/Applatix/appstore/master/wordpress/overview.md"
-    detail: "https://raw.githubusercontent.com/Applatix/appstore/master/wordpress/detail.md"
+    icon: "/wordpress/icon.png"
+    overview: "/wordpress/overview.md"
+    detail: "/wordpress/detail.md"
