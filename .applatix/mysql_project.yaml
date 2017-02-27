@@ -7,7 +7,7 @@ actions:
     name: test
     template: Mysql Server test
     parameters:
-      script: "/mysql/script/showdb.sql"
+      script: "/mysql/scripts/showdb.sql"
 categories: ["database"]
 publish:
   branches:
