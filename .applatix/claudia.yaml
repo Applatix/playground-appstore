@@ -34,6 +34,8 @@ application:
   name: "claudia"
 deployment:
   name: "claudia-server"
+scale:
+  min: 1
 external_routes:
   - name: "claudia-server"
     dns_prefix: "claudia"
@@ -56,6 +58,8 @@ application:
   name: "claudia"
 deployment:
   name: "claudia-ingestd"
+scale:
+  min: 1
 internal_routes:
   - name: "ingestd"
     ports:
@@ -77,6 +81,8 @@ application:
   name: "claudia"
 deployment:
   name: "claudia-userdb"
+scale:
+  min: 1
 internal_routes:
   - name: "userdb"
     ports:
@@ -95,6 +101,8 @@ application:
   name: "claudia"
 deployment:
   name: "claudia-costdb"
+scale:
+  min: 1
 internal_routes:
   - name: "costdb"
     ports:
