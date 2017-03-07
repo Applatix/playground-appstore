@@ -7,7 +7,7 @@ container:
   resources:
     mem_mib: 256
     cpu_cores: 0.1
-  image: get.applatix.io/applatix/axscm:v1
+  image: get.applatix.io/applatix/axscm:v2.0
   docker_options: ''
   command: "axscm clone %%repo%% /src --commit %%commit%%"
 inputs:
