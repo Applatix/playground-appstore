@@ -1,13 +1,16 @@
 ---
 type: project
-name: selenium test project
-description: selenium test project
+name: Selenium
+description: Portable software-testing framework for web applications.
 actions:
   -
-    name: launch
+    name: testall
     template: Selenium Standalone Test All AX Images
     parameters:
             repo: "https://github.com/Applatix/appstore.git"
+  -
+    name: testone
+    template: Selenium Standalone Test One AX
 categories: ["test", "promoted"]
 publish:
   branches:

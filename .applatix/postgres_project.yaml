@@ -1,7 +1,7 @@
 ---
 type: project
-name: postgres project
-description: popular sql database
+name: PostgreSQL
+description: Relational database with object-oriented features.
 actions:
   -
     name: test

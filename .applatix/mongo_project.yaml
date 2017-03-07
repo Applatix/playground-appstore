@@ -1,7 +1,7 @@
 ---
 type: project
-name: mongo project
-description: mongo project
+name: MongoDB
+description: Document-oriented (NoSQL) database.
 actions:
   -
     name: test

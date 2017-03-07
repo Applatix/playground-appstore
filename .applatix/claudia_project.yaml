@@ -1,7 +1,7 @@
 ---
 type: project
-name: claudia
-description: claudia
+name: Claudia
+description: AWS cost and usage analysis.
 actions:
   -
     name: run

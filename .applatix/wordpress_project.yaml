@@ -1,7 +1,7 @@
 ---
 type: project
-name: wordpress
-description: wordpress
+name: WordPress
+description: Content management system (CMS) based on PHP and MySQL.
 actions:
   -
     name: run
@@ -11,7 +11,7 @@ publish:
   branches:
     - master
 labels:
-    tags: "[\"cms\"]"
+    tags: "[\"database\"]"
 assets:
     icon: "/wordpress/icon.png"
     overview: "/wordpress/overview.md"

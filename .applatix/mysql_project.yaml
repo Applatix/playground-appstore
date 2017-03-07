@@ -1,8 +1,11 @@
 ---
 type: project
-name: mysql project
-description: popular sql database
+name: MySQL
+description: Open source relational database.
 actions:
+  -
+    name: run
+    template: mysql_server
   -
     name: test
     template: Mysql Server test

@@ -15,5 +15,6 @@ inputs:
       description: mysql docker image tag, e.g. 8.0.0. Default to latest
       default: latest
     root_password:
+      default: password
       description: password for mysql root user
 outputs:

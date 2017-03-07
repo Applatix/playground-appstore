@@ -50,8 +50,11 @@ fixtures:
 inputs:
   parameters:
     os:
+        default: ubuntu1604
     browser:
+        default: chromelatest
     code:
+        default: "%%session.repo%%"
 steps:
   - test:
       template: selenium-test-base-ax

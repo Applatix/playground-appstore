@@ -1,7 +1,7 @@
 ---
 type: project
-name: nginx project
-description: popular reverse proxy
+name: Nginx
+description: Web servier, reverse proxy, load balance and HTTP cache.
 actions:
   -
     name: test
@@ -11,7 +11,7 @@ publish:
   branches:
     - master
 labels:
-    tags: "[\"reverse proxy\"]"
+    tags: "[\"network\"]"
 assets:
     icon: "/nginx/nginx.png"
     detail: "/nginx/README.md"
