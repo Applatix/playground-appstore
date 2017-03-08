@@ -1,7 +1,7 @@
 ---
 type: project
 name: Nginx
-description: Web servier, reverse proxy, load balance and HTTP cache.
+description: Web server, reverse proxy, load balancer and HTTP cache.
 actions:
   -
     name: test
