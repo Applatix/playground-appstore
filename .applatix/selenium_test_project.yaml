@@ -4,12 +4,12 @@ name: Selenium
 description: Portable software-testing framework for web applications.
 actions:
   -
-    name: testall
+    name: test all
     template: Selenium Standalone Test All AX Images
     parameters:
             repo: "https://github.com/Applatix/appstore.git"
   -
-    name: testone
+    name: test one
     template: Selenium Standalone Test One AX
 categories: ["test", "promoted"]
 publish:
