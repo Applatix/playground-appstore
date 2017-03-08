@@ -9,7 +9,6 @@ container:
     cpu_cores: 0.2
   image: "postgres:%%image_tag%%"
   docker_options: "-e POSTGRES_PASSWORD==client"
-  command: "psql postgresql://%%user%%:%%password%%@%%host_ip%% < /src%%script%%"
 inputs:
   artifacts:
   - from: "%%code%%"
