@@ -6,12 +6,12 @@ actions:
   -
     name: test
     template: nginx server test
-categories: ["reverse proxy"]
+categories: ["network"]
 publish:
   branches:
     - master
 labels:
-    tags: "[\"network\"]"
+    tags: "['network']"
 assets:
     icon: "/nginx/nginx.png"
     detail: "/nginx/README.md"

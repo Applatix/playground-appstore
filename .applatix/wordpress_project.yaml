@@ -6,7 +6,7 @@ actions:
   -
     name: run
     template: wordpress-deployment-workflow
-categories: ["cms", "promoted"]
+categories: ["database", "promoted"]
 publish:
   branches:
     - master
