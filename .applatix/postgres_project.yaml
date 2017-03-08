@@ -7,9 +7,7 @@ actions:
     name: test
     template: Postgres Server test
     parameters:
-      repo: "https://github.com/Applatix/appstore.git"
-      commit: 607971d5a5081c2e1784e185764a782bf7358fe8
-      script: "/postgres/script/showdb.sql"
+      script: "/postgres/scripts/showdb.sql"
 categories: ["database"]
 publish:
   branches:
