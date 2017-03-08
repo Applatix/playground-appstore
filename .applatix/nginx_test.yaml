@@ -16,6 +16,7 @@ inputs:
       default: latest
     host_ip:
       description: ip of the nginx server to connect
+outputs:      
 
 ---
 type: service_template
