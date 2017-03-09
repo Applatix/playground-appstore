@@ -122,7 +122,7 @@ containers:
 ---
 type: service_template
 subtype: workflow
-name: Deploy mongo
+name: Deploy MongoDB
 description: This is the workflow to load MLB application on Mongo
 inputs:
   parameters:

@@ -5,7 +5,7 @@ description: Database project to show data from Mongodb.
 actions:
   -
     name: run
-    template: mongodb-deployment-workflow
+    template: Deploy MongoDB
 categories: ["database", "promoted"]
 publish:
   branches:
