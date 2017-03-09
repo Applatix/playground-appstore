@@ -96,7 +96,7 @@ inputs:
     code:
       default: "%%session.artifacts%%"
     appname:
-      default: ""
+      default: "mlb-app"
     domain:
       default: "demo.applatix.net"
 application:
