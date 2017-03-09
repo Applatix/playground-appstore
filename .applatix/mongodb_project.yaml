@@ -1,0 +1,18 @@
+---
+type: project
+name: Mongodb
+description: Database project to show data from Mongodb.
+actions:
+  -
+    name: run
+    template: mongodb-deployment-workflow
+categories: ["database", "promoted"]
+publish:
+  branches:
+    - master
+labels:
+    tags: "[\"database\"]"
+assets:
+    icon: "/mongodb/icon.png"
+    overview: "/mongodb/overview.md"
+    detail: "/mongodb/detail.md"

@@ -1,0 +1,151 @@
+---
+type: service_template
+subtype: container
+name: insert-mlb-data
+description: MLB Data Insert
+container:
+  resources:
+    mem_mib: 1024
+    cpu_cores: 0.2
+  image: "python:3.5.2"
+  command: sh -c 'pip install pymongo && pip install requests && python /src/loader.py --db mongo.%%appname%% --year %%year%%'
+inputs:
+  artifacts:
+  - from: "%%code%%"
+    path: "/src"
+  parameters:
+    code:
+    year:
+    appname:
+---
+type: service_template
+subtype: container
+name: deploy-mongodb
+description: MongoDB container
+container:
+  image: "mongo:3.2.9"
+  resources:
+    mem_mib: 2048
+    cpu_cores: 0.3
+
+---
+type: service_template
+subtype: container
+name: run-mlb-node
+container:
+  resources:
+    mem_mib: 1024
+    cpu_cores: 0.4
+    disk_gb: 2
+  image: docker.io/library/node:0.10
+  docker_options: "-e NODE_ENV=production -e MONGOLAB_URI=mongodb://mongo:27017/MLB"
+  command: "cd src && npm install && node app.js"
+inputs:
+  artifacts:
+  - from: "%%code%%"
+    path: "/src"
+  parameters:
+    code:
+labels:
+
+---
+type: service_template
+subtype: deployment
+name: deploy-mongo
+inputs:
+  parameters:
+    code:
+      default: "%%session.artifacts%%"
+    appname:
+      default: "mlb-app"
+    domain:
+      default: "demo.applatix.net"
+application:
+  name: "%%appname%%"
+deployment:
+  name: "mongo-deploy"
+scale:
+  min: 1
+external_routes:
+  - name: mongo-external
+    dns_prefix:
+    dns_domain: "%%domain%%"
+    port: 27017
+    target_port: 80
+    redirect_http_to_https: true
+    ip_white_list:
+      - 
+internal_routes:
+  - name: mongo
+    ports:
+      - name: tcp
+        port: 27017
+        target_port: 27017
+containers:
+  - server:
+      template: mongodb
+      parameters:
+        PROBE_CMD: sh -c 'ls -l /src'
+       
+---
+type: service_template
+subtype: deployment
+name: deploy-web
+inputs:
+  parameters:
+    code:
+      default: "%%session.artifacts%%"
+    appname:
+      default: ""
+    domain:
+      default: "demo.applatix.net"
+application:
+  name: "%%appname%%"
+deployment:
+  name: "run-mlb-deploy"
+scale:
+  min: 1
+external_routes:
+  - name: mlb-db
+    dns_prefix:
+    dns_domain: "%%domain%%"
+    target_port: 5000
+    redirect_http_to_https: true
+    ip_white_list:
+      - 0.0.0.0/0
+containers:
+  - server:
+      template: run-mlb-node
+      parameters:
+        PROBE_CMD: sh -c 'ls -l /src'
+
+---
+type: service_template
+subtype: workflow
+name: Deploy mongo
+description: This is the workflow to load MLB application on Mongo
+inputs:
+  parameters:
+    commit:
+      default: "%%session.commit%%"
+    appname:
+      default: "mlb-app"
+    repo:
+      default: "%%session.repo%%"
+    year:
+      default: 2015
+steps:
+  - checkout:
+      template: axscm-checkout
+  - deploy-mongo:
+      template: deploy-mongo
+      parameters:
+        code: "%%steps.checkout.code%%"
+  - insert-data:
+      template: insert-mlb-data
+      parameters:
+        code: "%%steps.checkout.code%%"        
+  - deploy-mlb:
+      template: deploy-web
+      parameters:
+        code: "%%steps.checkout.code%%"
