@@ -13,6 +13,6 @@ publish:
 labels:
     tags: "[\"database\"]"
 assets:
-    icon: "/mongodb/icon.png"
-    overview: "/mongodb/overview.md"
-    detail: "/mongodb/detail.md"
+    icon: "/mongo-db/icon.png"
+    overview: "/mongo-db/overview.md"
+    detail: "/mongo-db/detail.md"
