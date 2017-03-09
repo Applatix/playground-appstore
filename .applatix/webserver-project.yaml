@@ -11,5 +11,5 @@ publish:
   branches:
     - master
 assets:
-    icon: /webserver/icon.png
-    detail: /wordpress/README.md
+    icon: "/webserver/icon.png"
+    detail: "/wordpress/README.md"
