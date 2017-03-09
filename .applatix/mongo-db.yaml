@@ -83,7 +83,7 @@ internal_routes:
         target_port: 27017
 containers:
   - server:
-      template: deploy-mongo
+      template: mongodb
       parameters:
         PROBE_CMD: sh -c 'ls -l /src'
        
