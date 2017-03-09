@@ -1,0 +1,64 @@
+---
+type: container
+name: webserver-container
+description: Run a node based web server.
+
+inputs:
+  artifacts:
+  - from: "%%code%%"
+    path: /usr/src/app
+  parameters: 
+    code:
+
+container:
+  image: node:argon
+  command: npm install && npm start
+
+---
+type: deployment
+name: webserver-deployment
+inputs:
+  parameters:
+    appname:
+    domain:
+    code:
+application:
+  name: "%%appname%%"
+deployment:
+  name: "node"
+external_routes:
+  - name: "%%appname%%"
+    dns_prefix:
+    dns_domain: "%%domain%%"
+    target_port: 80
+    redirect_http_to_https: true
+    ip_white_list:
+      - 0.0.0.0/0
+containers:
+  - webserver:
+      template: webserver-container
+
+---
+type: workflow
+name: webserver-deployment-workflow
+
+inputs:
+  parameters:
+    appname:
+      default: "webserver"
+    domain:
+      default: "demo.applatix.net"
+    commit:
+      default: "%%session.commit%%"
+    repo:
+      default: "%%session.repo%%"
+
+steps:
+  -
+    checkout:
+      template: axscm-checkout
+  -
+    deploy-node:
+      template: webserver-deployment
+      parameters:
+        code: "%%steps.checkout.code%%"

@@ -1,0 +1,15 @@
+---
+type: project
+name: Web Server
+description: Start a simple node-based web server.
+actions:
+  -
+    name: run
+    template: webserver-deployment-workflow
+categories: ["demo"]
+publish:
+  branches:
+    - master
+assets:
+    icon: /webserver/icon.png
+    detail: /wordpress/README.md
