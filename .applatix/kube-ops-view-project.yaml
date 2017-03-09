@@ -1,0 +1,15 @@
+---
+type: project
+name: Kubernetes Operational View
+description: Application for monitoring Kubernetes cluster state.
+actions:
+  -
+    name: run
+    template: kube-ops-view-workflow
+categories: ["monitoring", "promoted"]
+publish:
+  branches:
+    - master
+assets:
+    icon: "/kube-ops-view/icon.png"
+    detail: "/kube-ops-view/README.md"

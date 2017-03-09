@@ -1,0 +1,88 @@
+---
+type: service_template
+subtype: container
+name: kube-ops-view-main
+description: This deployment runs the kube-ops-view main container
+container:
+  resources:
+    mem_mib: 100
+    cpu_cores: 0.2
+  image: hjacobs/kube-ops-view:latest
+  docker_options: "-e REDIS_URL=redis://kube-ops-view-redis:6379"
+  command:
+inputs:
+  artifacts:
+  parameters:
+outputs:
+---
+type: service_template
+subtype: container
+name: kube-ops-view-redis
+description: This deployment runs the redis service required for kube-ops-view
+container:
+  resources:
+    mem_mib: 256
+    cpu_cores: 0.1
+  image: redis:3.2-alpine
+  docker_options:
+  command:
+outputs:
+---
+type: service_template
+subtype: deployment
+name: kube-ops-view-main-deployment
+description: This creates the kube-ops-view-main deployment
+inputs:
+application:
+  name: "ops-view"
+deployment:
+  name: "main"
+scale:
+  min: 1
+inputs:
+  parameters:
+    domain:
+      default: "applatix.net"
+external_routes:
+  - name: "k8s"
+    dns_prefix:
+    dns_domain: "%%domain%%"
+    target_port: 8080
+    redirect_http_to_https: true
+    ip_white_list:
+      - 0.0.0.0/0
+containers:
+  - server:
+      template: kube-ops-view-main
+---
+type: service_template
+subtype: deployment
+name: kube-ops-view-redis-deployent
+description: This creates the kube-ops-view-redis deployment
+inputs:
+application:
+  name: "ops-view"
+deployment:
+  name: "kube-ops-view-redis-deployment"
+scale:
+  min: 1
+internal_routes:
+  - name: "kube-ops-view-redis"
+    ports:
+      - name: kube-ops-view-redis-port
+        port: 6379
+        target_port: 6379
+containers:
+  - server:
+      template: kube-ops-view-redis
+---
+type: service_template
+subtype: workflow
+name: kube-ops-view-workflow
+description: This is the workflow that deploys and runs kube-ops-view
+inputs:
+steps:
+  - kube-ops-view-redis-start:
+      template: kube-ops-view-redis-deployent
+    kube-ops-view-main-run:
+      template: kube-ops-view-main-deployment
