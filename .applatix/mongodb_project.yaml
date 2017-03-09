@@ -1,6 +1,6 @@
 ---
 type: project
-name: Mongodb
+name: Mongo-db
 description: Database project to show data from Mongodb.
 actions:
   -
