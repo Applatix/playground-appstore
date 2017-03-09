@@ -6,7 +6,7 @@ actions:
   -
     name: run
     template: webserver-deployment-workflow
-categories: ["demo"]
+categories: ["demo", "promoted"]
 publish:
   branches:
     - master
