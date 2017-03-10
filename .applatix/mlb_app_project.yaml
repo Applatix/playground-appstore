@@ -14,5 +14,4 @@ labels:
     tags: "[\"database\"]"
 assets:
     icon: "/mlb-app/node-js-mongodb.png"
-    overview: "/mlb-app/overview.md"
-    detail: "/mlb-app/detail.md"
+    detail: "/mlb-app/overview.md"
