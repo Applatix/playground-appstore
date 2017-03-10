@@ -13,6 +13,6 @@ publish:
 labels:
     tags: "[\"database\"]"
 assets:
-    icon: "/mlb-app/icon.png"
+    icon: "/mlb-app/node-js-mongodb.png"
     overview: "/mlb-app/overview.md"
     detail: "/mlb-app/detail.md"
