@@ -67,14 +67,7 @@ deployment:
 scale:
   min: 1
 external_routes:
-  - name: mongo-external
-    dns_prefix:
-    dns_domain: "%%domain%%"
-    port: 27017
-    target_port: 80
-    redirect_http_to_https: true
-    ip_white_list:
-      - 54.149.149.230/32
+ 
 internal_routes:
   - name: mongo
     ports:
