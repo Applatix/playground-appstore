@@ -39,7 +39,7 @@ container:
     disk_gb: 2
   image: docker.io/library/node:0.10
   docker_options: "-e NODE_ENV=production -e MONGOLAB_URI=mongodb://mongo:27017/MLB"
-  command: "cd /src/mlb-app && npm install && node app.js"
+  command: "cd src/mlb-app && npm install && node app.js"
 inputs:
   artifacts:
   - from: "%%code%%"
