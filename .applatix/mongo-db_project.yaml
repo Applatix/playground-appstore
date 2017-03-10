@@ -1,7 +1,7 @@
 ---
 type: project
 name: Mongo-db
-description: Database project to show data from Mongodb.
+description: This is the workflow to deploy Mongo container, insert MLB data then deploy Node.js container with a web application to read MLB data.
 actions:
   -
     name: run
@@ -13,6 +13,6 @@ publish:
 labels:
     tags: "[\"database\"]"
 assets:
-    icon: "/mongo-db/icon.png"
-    overview: "/mongo-db/overview.md"
-    detail: "/mongo-db/detail.md"
+    icon: "/mongo-data/icon.png"
+    overview: "/mongo-data/overview.md"
+    detail: "/mongo-data/detail.md"
