@@ -10,6 +10,9 @@ categories: ["demo", "promoted"]
 publish:
   branches:
     - master
+labels:
+    publisher: Applatix    
 assets:
     icon: "/webserver/icon.png"
-    detail: "/wordpress/README.md"
+    publisher_icon: "/webserver/AX_Pub.png"
+    detail: "/webserver/README.md"

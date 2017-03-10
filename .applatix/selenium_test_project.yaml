@@ -17,6 +17,7 @@ publish:
     - master
 labels:
     tags: "[\"test\"]"
+    publisher: Applatix
 assets:
     icon: "/selenium/selenium.png"
     overview: "/selenium/README.md"

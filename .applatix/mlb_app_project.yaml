@@ -12,6 +12,8 @@ publish:
     - master
 labels:
     tags: "[\"database\"]"
+    publisher: Applatix
 assets:
     icon: "/mlb-app/node-js-mongodb.png"
+    publisher_icon: "/mlb-app/AX_Pub.png"
     detail: "/mlb-app/overview.md"

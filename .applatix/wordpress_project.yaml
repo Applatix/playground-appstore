@@ -12,7 +12,8 @@ publish:
     - master
 labels:
     tags: "[\"database\"]"
+    publisher: Applatix
 assets:
     icon: "/wordpress/icon.png"
-    overview: "/wordpress/overview.md"
+    publisher_icon: "/wordpress/AX_Pub.png"
     detail: "/wordpress/detail.md"

@@ -12,7 +12,8 @@ publish:
     - master
 labels:
     tags: "[\"aws\"]"
+    publisher: Applatix
 assets:
     icon: "/claudia/icon.png"
-    overview: "/claudia/overview.md"
+    publisher_icon: "/claudia/AX_Pub.png"
     detail: "/claudia/detail.md"

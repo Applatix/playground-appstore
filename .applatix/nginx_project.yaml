@@ -12,6 +12,8 @@ publish:
     - master
 labels:
     tags: "[\"network\"]"
+    publisher: Applatix
 assets:
     icon: "/nginx/nginx.png"
+    publisher_icon: "/nginx/AX_Pub.png"
     detail: "/nginx/README.md"
