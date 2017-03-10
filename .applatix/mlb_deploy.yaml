@@ -12,7 +12,7 @@ container:
 inputs:
   artifacts:
   - from: "%%code%%"
-    path: "/src/mlb-app"
+    path: "/src"
   parameters:
     code:
     year:
@@ -43,7 +43,7 @@ container:
 inputs:
   artifacts:
   - from: "%%code%%"
-    path: "/src/mlb-app"
+    path: "/src"
   parameters:
     code:
 labels:
