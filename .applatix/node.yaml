@@ -1,6 +1,5 @@
 ---
-type: service_template
-subtype: container
+type: container
 name: node
 description: Container with installed Node JS
 container:

@@ -1,6 +1,5 @@
 ---
-type: service_template
-subtype: container
+type: container
 name: wordpress-mysql-deployment-container
 container:
   resources:
@@ -31,8 +30,7 @@ labels:
 ---
 
 ---
-type: service_template
-subtype: container
+type: container
 name: wordpress-deployment-container
 container:
   resources:
@@ -62,8 +60,7 @@ labels:
   "release": "M7"
 
 ---
-type: service_template
-subtype: deployment
+type: deployment
 name: wordpress-deploy-mysql
 inputs:
   parameters:
@@ -100,8 +97,7 @@ containers:
         PROBE_CMD: sh -c 'ls -l /src'
        
 ---
-type: service_template
-subtype: deployment
+type: deployment
 name: deploy-wordpress
 inputs:
   parameters:
@@ -132,8 +128,7 @@ containers:
         PROBE_CMD: sh -c 'ls -l /src'
 
 ---
-type: service_template
-subtype: workflow
+type: workflow
 name: wordpress-deployment-workflow
 inputs:
   parameters:

@@ -1,6 +1,5 @@
 ---
-type: service_template
-subtype: container
+type: container
 name: axscm-checkout
 description: Checks out a source repository to /src
 container:

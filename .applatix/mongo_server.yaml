@@ -1,6 +1,5 @@
 ---
-type: service_template
-subtype: container
+type: container
 name: mongo_server
 description: mongo server
 container:

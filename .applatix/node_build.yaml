@@ -1,6 +1,5 @@
 ---
-type: service_template
-subtype: workflow
+type: workflow
 name: "node-checkout-build"
 description: "Checkout then build"
 inputs:

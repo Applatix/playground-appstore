@@ -1,6 +1,5 @@
 ---
-type: service_template
-subtype: container
+type: container
 name: nginx_server
 description: nginx server
 container:

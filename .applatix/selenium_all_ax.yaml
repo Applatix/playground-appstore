@@ -1,6 +1,5 @@
 ---
-type: service_template
-subtype: container
+type: container
 name: selenium-server-ax
 description: Base selenium container for selenium firefox and chrome
 container:
@@ -15,8 +14,7 @@ inputs:
 outputs:
 
 ---
-type: service_template
-subtype: container
+type: container
 name: selenium-test-base-ax
 description: Base selenium test container
 container:
@@ -39,8 +37,7 @@ outputs:
       path: "/src/screenshot"
 
 ---
-type: service_template
-subtype: workflow
+type: workflow
 name: Selenium Standalone Test One AX
 description: This is the workflow for senlenium test to AX images
 fixtures:
@@ -62,8 +59,7 @@ steps:
         selenium_ip: "%%fixtures.selenium_remote.ip%%"
 
 ---
-type: service_template
-subtype: workflow
+type: workflow
 name: Selenium Standalone Test All AX Images
 description: This is the workflow for senlenium test
 inputs:

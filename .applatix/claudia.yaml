@@ -1,6 +1,5 @@
 ---
-type: service_template
-subtype: workflow
+type: workflow
 name: claudia-workflow
 inputs:
   parameters:
@@ -27,8 +26,7 @@ steps:
         version:
 
 ---
-type: service_template
-subtype: deployment
+type: deployment
 name: claudia-server
 application:
   name: "claudia"
@@ -51,8 +49,7 @@ inputs:
     version:
 
 ---
-type: service_template
-subtype: deployment
+type: deployment
 name: claudia-ingestd
 application:
   name: "claudia"
@@ -74,8 +71,7 @@ inputs:
     version:
 
 ---
-type: service_template
-subtype: deployment
+type: deployment
 name: claudia-userdb
 application:
   name: "claudia"
@@ -94,8 +90,7 @@ containers:
       template: claudia-userdb-container
 
 ---
-type: service_template
-subtype: deployment
+type: deployment
 name: claudia-costdb
 application:
   name: "claudia"
@@ -114,8 +109,7 @@ containers:
       template: claudia-costdb-container
 
 ---
-type: service_template
-subtype: container
+type: container
 name: claudia-userdb-container
 container:
   resources:
@@ -125,8 +119,7 @@ container:
   docker_options: -e POSTGRES_PASSWORD=my-secret-pw -e POSTGRES_DB=userdb
 
 ---
-type: service_template
-subtype: container
+type: container
 name: claudia-costdb-container
 container:
   resources:
@@ -136,8 +129,7 @@ container:
   docker_options: -e INFLUXDB_HTTP_MAX_ROW_LIMIT=40000 -e INFLUXDB_REPORTING_DISABLED=true
 
 ---
-type: service_template
-subtype: container
+type: container
 name: claudia-ingestd-container
 container:
   resources:
@@ -151,8 +143,7 @@ inputs:
     version:
 
 ---
-type: service_template
-subtype: container
+type: container
 name: claudia-server-container
 container:
   resources:

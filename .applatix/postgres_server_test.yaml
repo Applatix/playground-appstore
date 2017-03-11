@@ -1,6 +1,5 @@
 ---
-type: service_template
-subtype: container
+type: container
 name: postgres_client
 description: Postgres client
 container:
@@ -32,8 +31,7 @@ outputs:
 
 
 ---
-type: service_template
-subtype: workflow
+type: workflow
 name: Postgres Server test
 description: This is the workflow for Postgres server test
 inputs:

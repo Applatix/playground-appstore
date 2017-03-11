@@ -1,6 +1,5 @@
 ---
-type: service_template
-subtype: container
+type: container
 name: kube-ops-view-main
 description: This deployment runs the kube-ops-view main container
 container:

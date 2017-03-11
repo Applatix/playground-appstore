@@ -1,6 +1,5 @@
 ---
-type: service_template
-subtype: container
+type: container
 name: postgres_server
 description: postgres server
 container:

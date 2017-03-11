@@ -1,7 +1,6 @@
 
 ---
-type: service_template
-subtype: workflow
+type: workflow
 name: golang-checkout-build
 description: Checkout then build.
 inputs:

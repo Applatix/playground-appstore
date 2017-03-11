@@ -1,7 +1,6 @@
 
 ---
-type: service_template
-subtype: workflow
+type: workflow
 name: python-checkout-test
 description: Checkout then test.
 inputs:

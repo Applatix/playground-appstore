@@ -1,6 +1,5 @@
 ---
-type: service_template
-subtype: container
+type: container
 name: mongo_client
 description: mongo client
 container:
@@ -24,8 +23,7 @@ inputs:
       description: script to execute
 
 ---
-type: service_template
-subtype: workflow
+type: workflow
 name: mongo server test
 description: This is the workflow for mongo server test
 inputs:

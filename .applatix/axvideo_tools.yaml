@@ -1,6 +1,5 @@
 ---
-type: service_template
-subtype: container
+type: container
 name: vnc-recorder
 description: Base VNC recorder container
 container:
@@ -19,8 +18,7 @@ outputs:
       path: "/tmp/video.flv"
 
 ---
-type: service_template
-subtype: container
+type: container
 name: axvideo-converter
 description: Convert FLV to MPEG
 container:

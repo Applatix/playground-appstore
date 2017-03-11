@@ -1,6 +1,5 @@
 ---
-type: service_template
-subtype: container
+type: container
 name: insert-mlb-data
 description: MLB Data Insert
 container:
@@ -18,8 +17,7 @@ inputs:
     year:
     appname:
 ---
-type: service_template
-subtype: container
+type: container
 name: mongodb
 description: MongoDB container
 container:
@@ -29,8 +27,7 @@ container:
     cpu_cores: 0.3
 
 ---
-type: service_template
-subtype: container
+type: container
 name: run-mlb-node
 container:
   resources:
@@ -49,8 +46,7 @@ inputs:
 labels:
 
 ---
-type: service_template
-subtype: deployment
+type: deployment
 name: deploy-mongo
 inputs:
   parameters:
@@ -81,8 +77,7 @@ containers:
         PROBE_CMD: sh -c 'ls -l /src/mlb-app'
        
 ---
-type: service_template
-subtype: deployment
+type: deployment
 name: deploy-mlb
 inputs:
   parameters:
@@ -113,8 +108,7 @@ containers:
         PROBE_CMD: sh -c 'ls -l /src/mlb-app'
 
 ---
-type: service_template
-subtype: workflow
+type: workflow
 name: Deploy MLB 
 description: This is the workflow to deploy Mongo container, insert MLB data then deploy Node.js container with a web application to read MLB data.
 inputs:

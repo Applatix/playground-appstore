@@ -1,6 +1,5 @@
 ---
-type: service_template
-subtype: container
+type: container
 name: java
 description: Base container for java environment
 container:
