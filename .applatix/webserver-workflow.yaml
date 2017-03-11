@@ -12,7 +12,7 @@ inputs:
 
 container:
   image: node:argon
-  command: npm install && npm start
+  command: cd /usr/src/app && npm install && npm start
 
 ---
 type: deployment
