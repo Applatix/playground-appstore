@@ -47,7 +47,7 @@ inputs:
     appname:
       default: "webserver"
     domain:
-      default: "demo.applatix.net"
+      default: "hong.applatix.net"
     commit:
       default: "%%session.commit%%"
     repo:
