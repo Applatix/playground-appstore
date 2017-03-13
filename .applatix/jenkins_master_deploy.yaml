@@ -38,7 +38,7 @@ external_routes:
   - name: jenkins-master
     dns_prefix:
     dns_domain: "%%domain%%"
-    target_port: 5000
+    target_port: 80
     redirect_http_to_https: true
     ip_white_list:
       - 0.0.0.0/0
