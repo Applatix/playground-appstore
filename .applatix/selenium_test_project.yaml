@@ -20,5 +20,5 @@ labels:
     publisher: Applatix
 assets:
     icon: "/selenium/selenium.png"
-    overview: "/selenium/README.md"
+    publisher_icon: "/selenium/AX_Pub.png"
     detail: "/selenium/README.md"
