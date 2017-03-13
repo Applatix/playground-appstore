@@ -50,7 +50,7 @@ containers:
 
 ---
 type: workflow
-name: Deploy MLB 
+name: Deploy Jenkins Master 
 description: This is the workflow to deploy Jenkins as a Master node.
 inputs:
   parameters:
