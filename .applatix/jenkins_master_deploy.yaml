@@ -1,0 +1,69 @@
+---
+type: container
+name: run-jenkins-node
+container:
+  resources:
+    mem_mib: 9200
+    cpu_cores: 0.5
+    disk_gb: 2
+  image: jenkins
+  docker_options: "-e JAVA_OPTS=-Xmx8192m -e JENKINS_OPTS=--handlerCountStartup=100 --handlerCountMax=300"
+  command: 
+inputs:
+  artifacts:
+  - from: "%%code%%"
+    path: "/src"
+  parameters:
+    code:
+labels:
+
+---
+type: deployment
+name: deploy-jenkins
+inputs:
+  parameters:
+    code:
+      default: "%%session.artifacts%%"
+    appname:
+      default: "jenkins-master-app"
+    domain:
+      default: "demo.applatix.net"
+application:
+  name: "%%appname%%"
+deployment:
+  name: "run-jenkins-deploy"
+scale:
+  min: 1
+external_routes:
+  - name: jenkins-master
+    dns_prefix:
+    dns_domain: "%%domain%%"
+    target_port: 5000
+    redirect_http_to_https: true
+    ip_white_list:
+      - 0.0.0.0/0
+containers:
+  - server:
+      template: run-jenkins-node
+      parameters:
+        PROBE_CMD: sh -c 'ls -l /src '
+
+---
+type: workflow
+name: Deploy MLB 
+description: This is the workflow to deploy Jenkins as a Master node.
+inputs:
+  parameters:
+    commit:
+      default: "%%session.commit%%"
+    appname:
+      default: "jenkins-master-app"
+    repo:
+      default: "%%session.repo%%"
+steps:
+  - checkout:
+      template: axscm-checkout
+  - deploy-mlb:
+      template: deploy-jenkins
+      parameters:
+        code: "%%steps.checkout.code%%"
