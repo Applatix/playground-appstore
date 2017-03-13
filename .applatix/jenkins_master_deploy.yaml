@@ -63,7 +63,7 @@ inputs:
 steps:
   - checkout:
       template: axscm-checkout
-  - deploy-mlb:
+  - deploy-jenkins:
       template: deploy-jenkins
       parameters:
         code: "%%steps.checkout.code%%"
