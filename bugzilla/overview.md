@@ -10,6 +10,9 @@ We wanted to have a showcase application which deploys Bugzilla and a postgres d
 
 #### Configuration
 
-The configuration required from the user is the application name and domain name for the display url.
+Following is the default username and password.
+admin@bugzilla.org
+password 
+
 
 
