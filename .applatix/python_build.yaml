@@ -2,7 +2,7 @@
 ---
 type: workflow
 name: python-checkout-test
-description: Checkout then test.
+description: Checkout then test
 inputs:
   parameters:
     commit:
