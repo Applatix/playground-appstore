@@ -1,0 +1,19 @@
+---
+type: project
+name: Bugzilla
+description: This is the workflow to deploy Bugzilla container with postgres.
+actions:
+  -
+    name: run
+    template: Deploy Bugzilla
+categories: ["bugtracking", "promoted"]
+publish:
+  branches:
+    - master
+labels:
+    tags: "[\"bugtracking\"]"
+    publisher: Applatix
+assets:
+    icon: "/bugzilla/node-js-mongodb.png"
+    publisher_icon: "/bugzilla/AX_Pub.png"
+    detail: "/bugzilla/overview.md"
