@@ -14,5 +14,8 @@ Following is the default username and password.
 admin@bugzilla.org
 password 
 
+Please add /bugzilla to the url
+
+
 
 
