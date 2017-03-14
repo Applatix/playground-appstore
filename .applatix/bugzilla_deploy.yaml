@@ -57,13 +57,13 @@ inputs:
     commit:
       default: "%%session.commit%%"
     appname:
-      default: "jenkins-master-app"
+      default: "bugzilla-app"
     repo:
       default: "%%session.repo%%"
 steps:
   - checkout:
       template: axscm-checkout
-  - deploy-jenkins:
+  - deploy-bugzilla:
       template: deploy-bugzilla
       parameters:
         code: "%%steps.checkout.code%%"
