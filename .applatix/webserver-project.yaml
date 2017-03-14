@@ -12,7 +12,7 @@ actions:
     name: run v2
     template: webserver-deployment-workflow
     parameters:
-      commit: dbe0a68
+      commit: 497e5ad
 
 categories: ["demo", "promoted"]
 publish:
