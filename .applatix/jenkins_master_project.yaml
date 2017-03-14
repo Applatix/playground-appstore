@@ -1,6 +1,6 @@
 ---
 type: project
-name: Jenkins-Master
+name: Jenkins
 description: This is the workflow to deploy Jenkins as container.
 actions:
   -
