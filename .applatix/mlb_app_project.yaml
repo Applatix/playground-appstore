@@ -6,7 +6,7 @@ actions:
   -
     name: run
     template: Deploy MLB
-categories: ["database", "promoted"]
+categories: ["demo", "promoted"]
 publish:
   branches:
     - master

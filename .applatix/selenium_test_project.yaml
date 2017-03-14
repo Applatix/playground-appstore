@@ -11,7 +11,7 @@ actions:
   -
     name: test one
     template: Selenium Standalone Test One AX
-categories: ["test", "promoted"]
+categories: ["devops", "promoted"]
 publish:
   branches:
     - master
