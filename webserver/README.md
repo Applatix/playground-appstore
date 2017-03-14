@@ -1,1 +1,3 @@
-By default, serves a static page displaying the image of a car.
+## Simple Webserver 
+
+The simple webserver serves a static page with the image of a car.
