@@ -1,4 +1,4 @@
-## Appplatix Jenkins application
+## Applatix Jenkins application
 
 #### Synopsis
 
