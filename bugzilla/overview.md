@@ -1,4 +1,4 @@
-## Appplatix Bugzilla application
+## Applatix Bugzilla application
 
 #### Synopsis
 

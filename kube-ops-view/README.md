@@ -1,4 +1,4 @@
-## Appplatix kube-ops-view application
+## Applatix kube-ops-view application
 
 #### Synopsis
 

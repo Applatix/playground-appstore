@@ -1,4 +1,4 @@
-## Appplatix MLB application
+## Applatix MLB application
 
 #### Synopsis
 
