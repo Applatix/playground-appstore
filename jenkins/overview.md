@@ -2,11 +2,11 @@
 
 #### Synopsis
 
-Deploy of Jenkins single node Master.
+Deploy Jenkins CI server in single node Master configuration.
 
 #### Motivation
 
-Showcase Jenkins CI server running on Applatix as a single node Master 
+Showcase Jenkins CI server running on Applatix as a single node Master.
 
 #### Configuration
 
