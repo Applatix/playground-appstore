@@ -3,11 +3,11 @@ type: container
 name: run-jenkins-node
 container:
   resources:
-    mem_mib: 9200
+    mem_mib: 1024
     cpu_cores: 0.5
     disk_gb: 2
   image: jenkins
-  docker_options: "-e JAVA_OPTS=-Xmx8192m -e JENKINS_OPTS=--handlerCountStartup=100 --handlerCountMax=300"
+  docker_options: 
   command: 
 inputs:
   artifacts:
