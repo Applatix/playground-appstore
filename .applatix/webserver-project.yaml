@@ -4,8 +4,16 @@ name: Web Server
 description: Start a simple node-based web server.
 actions:
   -
-    name: run
+    name: run v1
     template: webserver-deployment-workflow
+    parameters:
+      commit: bd7d084
+  -
+    name: run v2
+    template: webserver-deployment-workflow
+    parameters:
+      commit: dbe0a68
+
 categories: ["demo", "promoted"]
 publish:
   branches:
