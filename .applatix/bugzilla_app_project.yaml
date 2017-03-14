@@ -6,7 +6,7 @@ actions:
   -
     name: run
     template: Deploy Bugzilla
-categories: ["bugtracking", "promoted"]
+categories: ["devops", "promoted"]
 publish:
   branches:
     - master
