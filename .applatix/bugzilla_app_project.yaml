@@ -1,7 +1,7 @@
 ---
 type: project
 name: Bugzilla
-description: This is the workflow to deploy Bugzilla container with postgres.
+description: Workflow to deploy Bugzilla with PostgreSQL.
 actions:
   -
     name: run
