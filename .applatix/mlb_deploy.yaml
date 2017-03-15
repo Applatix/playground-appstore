@@ -54,8 +54,6 @@ inputs:
       default: "%%session.artifacts%%"
     appname:
       default: "mlb-app"
-    domain:
-      default: "demo.applatix.net"
 application:
   name: "%%appname%%"
 deployment:
