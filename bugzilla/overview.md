@@ -2,11 +2,11 @@
 
 #### Synopsis
 
-Deploy Bugzilla container
+Deploy Bugzilla
 
 #### Motivation
 
-We wanted to have a showcase application which deploys Bugzilla and a postgres db.
+Showcase deploying Bugzilla backed by PostgreSQL an application on Applatix
 
 #### Configuration
 
@@ -15,7 +15,3 @@ admin@bugzilla.org
 password 
 
 Please add /bugzilla to the url
-
-
-
-
