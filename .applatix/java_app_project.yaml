@@ -14,6 +14,6 @@ labels:
     tags: "[\"demo\"]"
     publisher: Applatix
 assets:
-    icon: "/java-app/java-mongodb.jpg"
+    icon: "/java-app/java-mongo.png"
     publisher_icon: "/java-app/AX_Pub.png"
     detail: "/java-app/overview.md"

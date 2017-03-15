@@ -95,7 +95,7 @@ steps:
       template: deploy-parks-mongo
       parameters:
         code: "%%steps.checkout.code%%"
-  - deploy-nationalparksmlb:
+  - deploy-nationalparks:
       template: deploy-nationalparks
       parameters:
         code: "%%steps.checkout.code%%"
