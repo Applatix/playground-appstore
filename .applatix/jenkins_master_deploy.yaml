@@ -17,8 +17,6 @@ inputs:
   parameters:
     appname:
       default: "jenkins-master-app"
-    domain:
-      default: "demo.applatix.net"
 application:
   name: "%%appname%%"
 deployment:
@@ -27,8 +25,6 @@ scale:
   min: 1
 external_routes:
   - name: jenkins-master
-    dns_prefix:
-    dns_domain: "%%domain%%"
     target_port: 8080
     redirect_http_to_https: true
     ip_white_list:
