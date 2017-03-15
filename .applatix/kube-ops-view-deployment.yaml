@@ -40,11 +40,13 @@ scale:
   min: 1
 inputs:
   parameters:
+    domain_prefix:
+      default: "k8sview"
     domain:
       default: "applatix.net"
 external_routes:
   - name: "k8s"
-    dns_prefix:
+    dns_prefix: "%%domain_prefix%%"
     dns_domain: "%%domain%%"
     target_port: 8080
     redirect_http_to_https: true
@@ -83,5 +85,5 @@ inputs:
 steps:
   - kube-ops-view-redis-start:
       template: kube-ops-view-redis-deployent
-    kube-ops-view-main-run:
+  - kube-ops-view-main-run:
       template: kube-ops-view-main-deployment
