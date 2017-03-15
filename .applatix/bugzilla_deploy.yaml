@@ -54,7 +54,6 @@ name: Deploy Bugzilla
 description: Workflow to deploy Bugzilla.
 inputs:
   parameters:
- 
     appname:
       default: "bugzilla-app"
     repo:
