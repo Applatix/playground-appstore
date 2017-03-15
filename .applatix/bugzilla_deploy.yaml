@@ -51,7 +51,7 @@ containers:
 ---
 type: workflow
 name: Deploy Bugzilla 
-description: This is the workflow to deploy bugzilla as a Master node.
+description: Workflow to deploy Bugzilla.
 inputs:
   parameters:
     commit:
