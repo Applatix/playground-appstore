@@ -1,0 +1,19 @@
+---
+type: project
+name: National Parks App
+description: This is the workflow to deploy National Parks java application with 2 conatiners (one for Mongodb and one for Apache).
+actions:
+  -
+    name: run
+    template: Deploy National Parks
+categories: ["demo", "promoted"]
+publish:
+  branches:
+    - master
+labels:
+    tags: "[\"demo\"]"
+    publisher: Applatix
+assets:
+    icon: "/java-app/java-mongodb.jpg"
+    publisher_icon: "/java-app/AX_Pub.png"
+    detail: "/java-app/overview.md"

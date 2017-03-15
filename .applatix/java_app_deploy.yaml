@@ -1,0 +1,101 @@
+---
+type: container
+name: parks-mongodb
+description: MongoDB container
+container:
+  image: "applatix/parksdata"
+  resources:
+    mem_mib: 2048
+    cpu_cores: 0.3
+
+---
+type: container
+name: run-nationalparks-node
+container:
+  resources:
+    mem_mib: 1024
+    cpu_cores: 0.4
+    disk_gb: 2
+  image: applatix/nationalparks
+  docker_options: 
+  command: 
+
+---
+type: deployment
+name: deploy-parks-mongo
+inputs:
+  parameters:
+    code:
+      default: "%%session.artifacts%%"
+    appname:
+      default: "mlb-app"
+application:
+  name: "%%appname%%"
+deployment:
+  name: "mongo-deploy"
+scale:
+  min: 1
+external_routes:
+ 
+internal_routes:
+  - name: mongo
+    ports:
+      - name: tcp
+        port: 27017
+        target_port: 27017
+containers:
+  - server:
+      template: parks-mongodb
+      parameters:
+        PROBE_CMD: sh -c 'ls -l /src'
+       
+---
+type: deployment
+name: deploy-nationalparks
+inputs:
+  parameters:
+    code:
+      default: "%%session.artifacts%%"
+    appname:
+      default: "nationalparks-app"
+application:
+  name: "%%appname%%"
+deployment:
+  name: "run-nationalparks-deploy"
+scale:
+  min: 1
+external_routes:
+  - name: mlb-db
+    target_port: 5000
+    redirect_http_to_https: true
+    ip_white_list:
+      - 0.0.0.0/0
+containers:
+  - server:
+      template: run-nationalparks-node
+      parameters:
+        PROBE_CMD: sh -c 'ls -l /src'
+
+---
+type: workflow
+name: Deploy National Parks 
+description: This is the workflow to deploy Mongo container and a ubuntu container with compiled war file. Once the container is started the war is exploded into a full fledged java based web application.
+inputs:
+  parameters:
+    commit:
+      default: "%%session.commit%%"
+    appname:
+      default: "nationalparks-app"
+    repo:
+      default: "%%session.repo%%"
+steps:
+  - checkout:
+      template: axscm-checkout
+  - deploy-mongo:
+      template: deploy-parks-mongo
+      parameters:
+        code: "%%steps.checkout.code%%"
+  - deploy-nationalparksmlb:
+      template: deploy-nationalparks
+      parameters:
+        code: "%%steps.checkout.code%%"
