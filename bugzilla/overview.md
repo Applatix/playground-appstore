@@ -6,7 +6,7 @@ Deploy Bugzilla
 
 #### Motivation
 
-Showcase deploying Bugzilla backed by PostgreSQL an application on Applatix
+Showcase deploying Bugzilla backed by PostgreSQL on Applatix
 
 #### Configuration
 
