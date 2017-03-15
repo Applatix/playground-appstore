@@ -10,7 +10,7 @@ We wanted to have a showcase application which deploys Java application (war) an
 
 #### Configuration
 
-
+/national-parks/
 
 
 

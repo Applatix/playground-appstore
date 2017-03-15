@@ -18,7 +18,7 @@ inputs:
     appname:
       default: "bugzilla-app"
     domain:
-      default: "demo.applatix.net"
+      default:
 application:
   name: "%%appname%%"
 deployment:
