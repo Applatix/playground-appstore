@@ -15,8 +15,6 @@ type: deployment
 name: deploy-bugzilla
 inputs:
   parameters:
-    code:
-      default: "%%session.artifacts%%"
     appname:
       default: "bugzilla-app"
     domain:
