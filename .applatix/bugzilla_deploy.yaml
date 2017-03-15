@@ -54,8 +54,7 @@ name: Deploy Bugzilla
 description: Workflow to deploy Bugzilla.
 inputs:
   parameters:
-    commit:
-      default: "%%session.commit%%"
+ 
     appname:
       default: "bugzilla-app"
     repo:
