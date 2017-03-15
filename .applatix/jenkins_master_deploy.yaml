@@ -8,22 +8,13 @@ container:
     disk_gb: 2
   image: jenkins
   docker_options: 
-  command: 
-inputs:
-  artifacts:
-  - from: "%%code%%"
-    path: "/src"
-  parameters:
-    code:
-labels:
+  command:
 
 ---
 type: deployment
 name: deploy-jenkins
 inputs:
   parameters:
-    code:
-      default: "%%session.artifacts%%"
     appname:
       default: "jenkins-master-app"
     domain:
@@ -54,16 +45,8 @@ name: Deploy Jenkins
 description: This is the workflow to deploy Jenkins as a Master node.
 inputs:
   parameters:
-    commit:
-      default: "%%session.commit%%"
     appname:
       default: "jenkins-master-app"
-    repo:
-      default: "%%session.repo%%"
 steps:
-  - checkout:
-      template: axscm-checkout
   - deploy-jenkins:
       template: deploy-jenkins
-      parameters:
-        code: "%%steps.checkout.code%%"
