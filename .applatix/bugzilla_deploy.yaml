@@ -9,13 +9,6 @@ container:
   image: dklawren/docker-bugzilla
   docker_options: 
   command: 
-inputs:
-  artifacts:
-  - from: "%%code%%"
-    path: "/src"
-  parameters:
-    code:
-labels:
 
 ---
 type: deployment
@@ -56,12 +49,10 @@ inputs:
   parameters:
     appname:
       default: "bugzilla-app"
-    repo:
-      default: "%%session.repo%%"
 steps:
   - checkout:
       template: axscm-checkout
   - deploy-bugzilla:
       template: deploy-bugzilla
       parameters:
-        code: "%%steps.checkout.code%%"
+        code: 
