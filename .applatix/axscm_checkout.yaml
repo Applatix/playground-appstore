@@ -5,7 +5,6 @@ description: Checks out a source repository to /src
 
 container:
   image: get.applatix.io/applatix/axscm:v2.0
-  docker_options: ''
   command: "axscm clone %%repo%% /src --commit %%commit%%"
 
 inputs:

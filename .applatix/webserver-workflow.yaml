@@ -4,15 +4,13 @@ name: webserver-container
 description: Run a node based web server.
 
 inputs:
-  artifacts:
-  - from: "%%code%%"
-    path: /usr/src/app
   parameters: 
-    code:
+    commit:
+    repo:
 
 container:
   image: node:argon
-  command: cd /usr/src/app/webserver && npm install && npm start
+  command: "git clone -n %%repo%% /src && cd /src && git checkout %%commit%% && npm install && npm start"
 
 ---
 type: deployment
@@ -21,7 +19,8 @@ inputs:
   parameters:
     appname:
     domain:
-    code:
+    commit:
+    repo:
 application:
   name: "%%appname%%"
 deployment:
@@ -55,10 +54,5 @@ inputs:
 
 steps:
   -
-    checkout:
-      template: axscm-checkout
-  -
-    deploy-node:
+    deploy:
       template: webserver-deployment
-      parameters:
-        code: "%%steps.checkout.code%%"
