@@ -51,8 +51,6 @@ type: deployment
 name: deploy-nationalparks
 inputs:
   parameters:
-    code:
-      default: "%%session.artifacts%%"
     appname:
       default: "nationalparks-app"
 application:
