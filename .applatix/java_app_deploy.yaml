@@ -108,7 +108,7 @@ inputs:
     commit:
       default: "%%session.commit%%"
     appname:
-      default: "nationalparks-app"
+      default: "national-parks"
     repo:
       default: "%%session.repo%%"  
 steps:
