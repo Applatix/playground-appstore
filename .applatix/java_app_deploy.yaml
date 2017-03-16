@@ -38,7 +38,7 @@ scale:
 external_routes:
  
 internal_routes:
-  - name: mongo
+  - name: parks-mongo
     ports:
       - name: tcp
         port: 27017
@@ -47,7 +47,6 @@ containers:
   - server:
       template: parks-mongodb
       parameters:
-        PROBE_CMD: sh -c 'ls -l /src'
        
 ---
 type: deployment
@@ -66,7 +65,8 @@ scale:
   min: 1
 external_routes:
   - name: nationalparks
-    target_port: 8088
+    port: 8088
+    target_port: 80
     redirect_http_to_https: true
     ip_white_list:
       - 0.0.0.0/0
@@ -74,7 +74,6 @@ containers:
   - server:
       template: run-nationalparks-node
       parameters:
-        PROBE_CMD: sh -c 'ls -l /src'
 
 ---
 type: workflow
@@ -82,20 +81,11 @@ name: Deploy National Parks
 description: This is the workflow to deploy Mongo container and a ubuntu container with compiled war file. Once the container is started the war is exploded into a full fledged java based web application.
 inputs:
   parameters:
-    commit:
-      default: "%%session.commit%%"
     appname:
       default: "nationalparks-app"
-    repo:
-      default: "%%session.repo%%"
 steps:
-  - checkout:
-      template: axscm-checkout
   - deploy-mongo:
       template: deploy-parks-mongo
-      parameters:
-        code: "%%steps.checkout.code%%"
+
   - deploy-nationalparks:
       template: deploy-nationalparks
-      parameters:
-        code: "%%steps.checkout.code%%"
