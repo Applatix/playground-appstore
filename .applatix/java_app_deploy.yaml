@@ -61,7 +61,7 @@ scale:
   min: 1
 external_routes:
   - name: nationalparks
-    port: 8088
+    port: 8080
     target_port: 80
     redirect_http_to_https: true
     ip_white_list:
