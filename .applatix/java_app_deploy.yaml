@@ -28,7 +28,7 @@ container:
 
 ---
 type: container
-name: run-nationalparks-node
+name: national-parks-node
 container:
   resources:
     mem_mib: 1024
@@ -53,7 +53,7 @@ inputs:
     code:
       default: "%%session.artifacts%%"
     appname:
-      default: "mlb-app"
+      default: "national-parks"
 application:
   name: "%%appname%%"
 deployment:
@@ -75,17 +75,17 @@ containers:
        
 ---
 type: deployment
-name: deploy-nationalparks
+name: deploy-national-parks
 inputs:
   parameters:
     code:
       default: "%%session.artifacts%%"
     appname:
-      default: "nationalparks-app"
+      default: "national-parks"
 application:
   name: "%%appname%%"
 deployment:
-  name: "run-nationalparks-deploy"
+  name: "national-parks-deploy"
 scale:
   min: 1
 external_routes:
@@ -96,7 +96,7 @@ external_routes:
       - 0.0.0.0/0
 containers:
   - server:
-      template: run-nationalparks-node
+      template: national-parks-node
       parameters:
 
 ---
@@ -123,6 +123,6 @@ steps:
       parameters:
         code: "%%steps.checkout.code%%" 
   - deploy-nationalparks:
-      template: deploy-nationalparks
+      template: deploy-national-parks
       parameters:
         code: "%%steps.checkout.code%%"
