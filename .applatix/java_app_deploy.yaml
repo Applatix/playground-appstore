@@ -1,9 +1,28 @@
 ---
 type: container
+name: insert-parks-data
+description: National Park Data Insert
+container:
+  resources:
+    mem_mib: 1024
+    cpu_cores: 0.2
+  image: "python:3.5.2"
+  command: sh -c 'mongoimport --host parks-mongo.%%appname%%  --drop -d demo -c nationalparks --type json --jsonArray --file /tmp/national-parks.json'
+inputs:
+  artifacts:
+  - from: "%%code%%"
+    path: "/src"
+  parameters:
+    code:
+    year:
+    appname:
+
+---
+type: container
 name: parks-mongodb
 description: MongoDB container
 container:
-  image: "applatix/parksdata"
+  image: "mongo:3.2.9"
   resources:
     mem_mib: 2048
     cpu_cores: 0.3
@@ -81,6 +100,7 @@ inputs:
 steps:
   - deploy-mongo:
       template: deploy-parks-mongo
-
+  - insert-data:
+      template: insert-parks-data
   - deploy-nationalparks:
       template: deploy-nationalparks
