@@ -1,6 +1,6 @@
 ---
 type: project
-name: National Parks App
+name: National Parks
 description: This is the workflow to deploy National Parks java application with 2 conatiners (one for Mongodb and one for Apache).
 actions:
   -
