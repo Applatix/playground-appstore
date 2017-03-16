@@ -6,7 +6,7 @@ actions:
   -
     name: run
     template: Deploy Jenkins
-categories: ["devops", "promoted"]
+categories: ["devops"]
 publish:
   branches:
     - master
