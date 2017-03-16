@@ -10,7 +10,7 @@ inputs:
 
 container:
   image: node:argon
-  command: "git clone -n %%repo%% /usr/src/app && cd /usr/src/app && git checkout %%commit%% && npm install && npm start"
+  command: "git clone -n %%repo%% /src && cd /src && git checkout %%commit%% && cp -R /src/webserver/ /usr/src/app && cd /usr/src/app && npm install && npm start"
 
 ---
 type: deployment
