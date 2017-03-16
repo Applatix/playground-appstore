@@ -15,24 +15,24 @@ container:
 ---
 type: deployment
 name: webserver-deployment
+
 inputs:
   parameters:
     appname:
     domain:
     commit:
     repo:
+
 application:
   name: "%%appname%%"
 deployment:
   name: "node"
 external_routes:
   - name: "%%appname%%"
-    dns_prefix:
-    dns_domain: "%%domain%%"
     target_port: 80
-    redirect_http_to_https: true
     ip_white_list:
       - 0.0.0.0/0
+
 containers:
   - webserver:
       template: webserver-container
@@ -45,8 +45,6 @@ inputs:
   parameters:
     appname:
       default: "webserver"
-    domain:
-      default: "hong.applatix.net"
     commit:
       default: "%%session.commit%%"
     repo:
