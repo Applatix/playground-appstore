@@ -65,8 +65,8 @@ deployment:
 scale:
   min: 1
 external_routes:
-  - name: mlb-db
-    target_port: 5000
+  - name: nationalparks
+    target_port: 8088
     redirect_http_to_https: true
     ip_white_list:
       - 0.0.0.0/0
