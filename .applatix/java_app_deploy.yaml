@@ -50,6 +50,8 @@ type: deployment
 name: deploy-parks-mongo
 inputs:
   parameters:
+    code:
+      default: "%%session.artifacts%%"
     appname:
       default: "mlb-app"
 application:
@@ -76,6 +78,8 @@ type: deployment
 name: deploy-nationalparks
 inputs:
   parameters:
+    code:
+      default: "%%session.artifacts%%"
     appname:
       default: "nationalparks-app"
 application:
@@ -112,9 +116,13 @@ steps:
       template: axscm-checkout
   - deploy-mongo:
       template: deploy-parks-mongo
+      parameters:
+        code: "%%steps.checkout.code%%"
   - insert-data:
       template: insert-parks-data
       parameters:
         code: "%%steps.checkout.code%%" 
   - deploy-nationalparks:
       template: deploy-nationalparks
+      parameters:
+        code: "%%steps.checkout.code%%"
