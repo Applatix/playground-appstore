@@ -6,7 +6,7 @@ container:
   resources:
     mem_mib: 1024
     cpu_cores: 0.2
-  image: "python:3.5.2"
+  image: "mongo:3.2.9"
   command: sh -c 'mongoimport --host parks-mongo.%%appname%%  --drop -d demo -c nationalparks --type json --jsonArray --file /src/java-app/national-parks.json'
 inputs:
   artifacts:
