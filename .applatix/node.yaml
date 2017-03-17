@@ -23,5 +23,3 @@ outputs:
   artifacts:
     code:
       path: "/src"
-labels:
-  ax_ea_docker_enable: '{ "graph-storage-name": "axbuildstorage", "graph-storage-size": "25Gi", "cpu_cores":"0.2", "mem_mib":"512"}'

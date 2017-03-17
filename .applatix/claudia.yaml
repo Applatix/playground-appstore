@@ -10,7 +10,7 @@ inputs:
     version:
       default: "latest"
     domain:
-      default: "applatix.net"
+      default: " "
 steps:
   - userdb:
       template: claudia-userdb

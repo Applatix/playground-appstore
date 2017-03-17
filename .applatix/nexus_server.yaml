@@ -32,7 +32,7 @@ inputs:
     app:
       default: "nexus-repo"
     domain:
-      default: "applatix.net"
+      default: " "
     prefix:
       default: " "
 external_routes:

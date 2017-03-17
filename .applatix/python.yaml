@@ -20,5 +20,3 @@ inputs:
       description: The command to be run inside the container.
     checkout_artifact:
       description: The src artifact coming from code checkout.
-labels:
-  ax_ea_docker_enable: '{ "graph-storage-name": "axbuildstorage", "graph-storage-size": "25Gi", "cpu_cores":"0.2", "mem_mib":"512"}'
