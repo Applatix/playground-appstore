@@ -7,7 +7,7 @@ container:
     mem_mib: 1024
     cpu_cores: 0.2
   image: golang:%%image_tag%%
-  command: cd /go/src/%%package_path%% && go get -t -v ./... && %%command%%
+  command: sh -c 'cd /go/src/%%package_path%% && go get -t -v ./... && %%command%%'
 inputs:
   artifacts:
   - from: "%%checkout_artifact%%"

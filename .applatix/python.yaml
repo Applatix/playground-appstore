@@ -7,7 +7,7 @@ container:
     mem_mib: 2048
     cpu_cores: 0.2
   image: "python:%%image_tag%%"
-  command: "%%command%%"
+  command: "sh -c '%%command%%'"
 inputs:
   artifacts:
   - from: "%%checkout_artifact%%"

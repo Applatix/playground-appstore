@@ -3,11 +3,11 @@ type: project
 name: PostgreSQL
 description: Relational database with object-oriented features.
 actions:
-  -
-    name: test
-    template: Postgres Server test
-    parameters:
-      script: "/postgres/scripts/showdb.sql"
+-
+  name: test
+  template: Postgres Server test
+  parameters:
+    script: "/postgres/scripts/showdb.sql"
 categories: ["database"]
 publish:
   branches:

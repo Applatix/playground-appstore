@@ -2,12 +2,10 @@
 type: container
 name: webserver-container
 description: Run a node based web server.
-
 inputs:
   parameters: 
     commit:
     repo:
-
 container:
   image: node:argon
   command: "git clone -n %%repo%% /src && cd /src && git checkout %%commit%% && cp -R /src/webserver/ /usr/src/app && cd /usr/src/app && npm install && npm start"
@@ -15,14 +13,12 @@ container:
 ---
 type: deployment
 name: webserver-deployment
-
 inputs:
   parameters:
     appname:
     domain:
     commit:
     repo:
-
 application:
   name: "%%appname%%"
 deployment:
@@ -32,7 +28,6 @@ external_routes:
     target_port: 80
     ip_white_list:
       - 0.0.0.0/0
-
 containers:
   - webserver:
       template: webserver-container
@@ -40,16 +35,16 @@ containers:
 ---
 type: workflow
 name: webserver-deployment-workflow
-
 inputs:
   parameters:
     appname:
       default: "webserver"
+    domain:
+      default: " "
     commit:
       default: "%%session.commit%%"
     repo:
       default: "%%session.repo%%"
-
 steps:
   -
     deploy:
