@@ -23,4 +23,4 @@ inputs:
     package_path:
       description: Path under GOPATH/src that we should put your source code, e.g. github.com/blevesearch/bleve
 labels:
-    "ax_ea_docker_enable": "{ \"graph-storage-name\": \"axbuildstorage\", \"graph-storage-size\": \"90Gi\" }"
+  ax_ea_docker_enable: '{ "graph-storage-name": "axbuildstorage", "graph-storage-size": "25Gi", "cpu_cores":"0.2", "mem_mib":"512"}'
