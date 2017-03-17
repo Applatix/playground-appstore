@@ -33,7 +33,6 @@ container:
   resources:
     mem_mib: 1024
     cpu_cores: 0.4
-    disk_gb: 2
   image: applatix/nationalparks
   docker_options: 
   command: 

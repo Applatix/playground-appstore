@@ -5,7 +5,6 @@ container:
   resources:
     mem_mib: 1024
     cpu_cores: 0.5
-    disk_gb: 2
   image: dklawren/docker-bugzilla
   docker_options: 
   command: 

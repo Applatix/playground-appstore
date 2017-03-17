@@ -18,5 +18,5 @@ steps:
 - build:
     template: "node"
     parameters:
-      CMD: "sh -c 'cd /src && npm set progress=false && npm install --unsafe-perm && npm run build:prod'"
+      CMD: "cd /src && npm --version"
       checkout_artifact: "%%steps.checkout.code%%"

@@ -10,7 +10,7 @@ inputs:
     repo:
       default: "%%session.repo%%"
     command:
-      default: "python --version"
+      default: "cd /src && python --version"
       description: The command to run in the test step, e.g. python /src/myscript.py 
 steps:
   - checkout:

@@ -6,7 +6,6 @@ container:
   resources:
     mem_mib: 2048
     cpu_cores: 0.4
-    disk_gb: 2
   image: docker.io/library/node:6.3.1
   docker_options: ''
   command: "sh -c '%%CMD%%'"

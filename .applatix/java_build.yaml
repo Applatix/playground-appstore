@@ -10,7 +10,7 @@ inputs:
     repo:
       default: "%%session.repo%%"
     command:
-      default: "sh -c 'mvn --version'"
+      default: "mvn --version"
       description: The command to run in the build step, e.g. mvn 
 steps:
   - checkout:
