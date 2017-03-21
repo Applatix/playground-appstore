@@ -1,0 +1,58 @@
+---
+type: project
+name: AWS Service Catalog
+description: Useful AWS management operations.
+actions:
+  -
+    name: Provison instance
+    template: service-catalog
+    parameters:
+      service: provision-instance
+  -
+    name: List open security groups
+    template: service-catalog
+    parameters:
+      service: list-open-security-groups
+  -
+    name: List unused resources
+    template: service-catalog
+    parameters:
+      service: list-unused-resources
+  -
+    name: Delete S3 bucket
+    template: service-catalog
+    parameters:
+      service: delete-s3-bucket
+  -
+    name: Delete unused key pairs
+    template: service-catalog
+    parameters:
+      service: delete-unused-key-pairs
+
+
+categories: ["demo"]
+publish:
+  branches:
+    - master
+labels:
+    publisher: Applatix    
+assets:
+    icon: "/service-catalog/icon.png"
+    publisher_icon: "/publishers/AX_Pub.png"
+    detail: "/service-catalog/README.md"
+---
+type: container
+name: service-catalog
+description: Service catalog.
+
+inputs:
+  parameters:
+    service:
+      default: ""
+    instance-type::
+      default: m3.large
+
+container:
+  image: ubuntu
+  command: "echo %%service%% is disallowed"
+
