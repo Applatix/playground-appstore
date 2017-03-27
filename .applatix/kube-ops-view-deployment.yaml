@@ -36,12 +36,9 @@ inputs:
   parameters:
     domain_prefix:
       default: "k8sview"
-    domain:
-      default: "applatix.net"
 external_routes:
   - name: "k8s"
     dns_prefix: "%%domain_prefix%%"
-    dns_domain: "%%domain%%"
     target_port: 8080
     redirect_http_to_https: true
     ip_white_list:
