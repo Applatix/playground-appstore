@@ -1,0 +1,19 @@
+---
+type: project
+name: Nessus
+description: This is the workflow to deploy Nessus container.
+actions:
+  -
+    name: run
+    template: Deploy Nessus
+categories: ["demo", "promoted"]
+publish:
+  branches:
+    - master
+labels:
+    tags: "[\"security\"]"
+    publisher: Applatix
+assets:
+    icon: "/nessus/nessus-logo.png"
+    publisher_icon: "/nessus/AX_Pub.png"
+    detail: "/nessus/README.md"

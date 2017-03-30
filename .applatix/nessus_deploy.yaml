@@ -1,0 +1,46 @@
+---
+type: container
+name: nessus
+description: Nessus container
+container:
+  image: "applatix/nessus"
+  resources:
+    mem_mib: 2048
+    cpu_cores: 0.3
+
+---
+type: deployment
+name: deploy-nessus
+inputs:
+  parameters:
+    appname:
+      default: "nessus-app"
+application:
+  name: "%%appname%%"
+deployment:
+  name: "run-nessus-deploy"
+scale:
+  min: 1
+external_routes:
+  - name: nessus
+    target_port: 8834
+    redirect_http_to_https: true
+    ip_white_list:
+      - 0.0.0.0/0
+containers:
+  - server:
+      template: nessus
+      parameters:
+        PROBE_CMD:
+
+---
+type: workflow
+name: Deploy Nessus
+description: This is the workflow to deploy Nessus vulnerability scanner.
+inputs:
+  parameters:
+    appname:
+      default: "nessus-app"
+steps:
+  - deploy-nessus:
+      template: deploy-nessus
