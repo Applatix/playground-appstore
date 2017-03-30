@@ -1,7 +1,7 @@
 ---
 type: project
 name: Sample Web App
-description: This is a sample workflow to deploy a Node.js and MongoDB based App. It will deploy a MongoDB container, insert data and then deploy Node.js container with a web application to read Major Baseball League (MLB) data.
+description: This is a sample workflow to deploy a Node.js and MongoDB based Web App displaying Major Baseball League (MLB) data. It will deploy a MongoDB container, insert data and then deploy Node.js container with a web application.
 actions:
   -
     name: run
