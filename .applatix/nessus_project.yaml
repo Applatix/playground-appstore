@@ -6,7 +6,7 @@ actions:
   -
     name: run
     template: Deploy Nessus
-categories: ["demo", "promoted"]
+categories: ["security", "promoted"]
 publish:
   branches:
     - master

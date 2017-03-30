@@ -6,7 +6,7 @@ container:
   image: "applatix/nessus"
   resources:
     mem_mib: 2048
-    cpu_cores: 0.3
+    cpu_cores: 0.8
 
 ---
 type: deployment
