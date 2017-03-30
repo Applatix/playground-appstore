@@ -1,1 +1,0 @@
-Basic hello world example.
