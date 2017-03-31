@@ -1,7 +1,7 @@
 ---
 type: project
-name: Selenium
-description: Portable software-testing framework for web applications.
+name: Selenium testing
+description: Example workflow launching selenium tests.
 actions:
   -
     name: test all
