@@ -15,7 +15,7 @@ inputs:
 outputs:
   artifacts:
     video:
-      path: "/tmp/video.flv"
+      path: "%%output%%"
 
 ---
 type: container
@@ -26,15 +26,16 @@ container:
     mem_mib: 1024
     cpu_cores: 0.1
   image: get.applatix.io/applatix/axvncrecorder:latest
-  command: "ffmpeg -ss 00:01:00 -i /tmp/video.flv -c:v mpeg2video %%output%%"
+  command: "mkdir -p /tmp/report && ffmpeg -i /tmp/video.flv -ar 22050 /tmp/report/video.mp4 && echo '<!DOCTYPE html><html><body><video width=\"640\" height=\"480\" controls><source src=\"video.mp4\" type=\"video/mp4\"></video></body></html>' > /tmp/report/index.html"
 inputs:
   artifacts:
-  - from: "%%input%%"
+  - from: "%%video_input%%"
     path: "/tmp"
   parameters:
-    input:
-    output:
+    video_input:
 outputs:
   artifacts:
     video:
-      path: "%%output%%"
+      path: "/tmp/report"
+      meta_data:
+      - browsable

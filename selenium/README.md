@@ -1,3 +1,8 @@
 ### Selenium
 
-The selenium test app has a test action that launches 28 webdriver images, and run 3 basic selenium UI tests using these selenium webdrivers
+The selenium test app which demonstrates how to:
+
+* run a Selenium test against a web application running in two web browsers (Chrome and Firefox) 
+* record a video that has screenshots of the test
+* convert the video into another file format
+* output a report of the test as an HTML file

@@ -1,28 +1,43 @@
 ---
-type: container
-name: selenium-server-ax
-description: Base selenium container for selenium firefox and chrome
-container:
-  resources:
-    mem_mib: 1024
-    cpu_cores: 0.1
-  image: "applatix/%%os%%-%%browser%%:latest"
+type: workflow
+name: selenium-example-workflow
 inputs:
   parameters:
-    os:
+    commit:
+      default: "%%session.commit%%"
+    repo:
+      default: "%%session.repo%%"
     browser:
-outputs:
+      default: $$[chrome,firefox]$$
+steps:
+- checkout:
+    template: "axscm-checkout"
+- test_with_video:
+    template: selenium-test-video-workflow
+    parameters:
+      code: "%%steps.checkout.code%%"
 
 ---
-type: container
-name: selenium-test-base-ax
-description: Base selenium test container
-container:
-  resources:
-    mem_mib: 1024
-    cpu_cores: 0.1
-  image: "python:3.5.2"
-  command: sh -c 'pip3 install selenium && pip3 install pytest && pytest -vv /src/selenium/selenium_standalone_test.py --remote %%selenium_ip%% --browser %%browser%% --capture=no'
+type: workflow
+name: selenium-test-video-workflow
+inputs:
+  parameters:
+    code:
+    browser:
+steps:
+- test:
+    template: selenium-test-workflow
+- convert:
+    template: axvideo-converter
+    flags:
+      always_run: true
+    parameters:
+      video_input: "%%steps.test.video%%"
+
+---
+type: service_template
+subtype: workflow
+name: selenium-test-workflow
 inputs:
   artifacts:
   - from: "%%code%%"
@@ -30,51 +45,81 @@ inputs:
   parameters:
     code:
     browser:
-    selenium_ip:
+fixtures:
+- selenium:
+    template: "selenium-server"
+- app:
+    template: selenium-test-app
+- vnc_recorder:
+    template: vnc-recorder
+    parameters:
+      remote: "%%fixtures.selenium.ip%%"
+      output: "/tmp/video.flv"
+steps:
+- e2e_test:
+    template: selenium_e2e_test
+    parameters:
+      selenium_ip: "%%fixtures.selenium.ip%%"
+      app_ip:  "%%fixtures.app.ip%%"
 outputs:
   artifacts:
-    screenshot:
-      path: "/src/screenshot"
+    video:
+      from: "%%fixtures.vnc_recorder.video%%"
 
 ---
-type: workflow
-name: Selenium Standalone Test One AX
-description: This is the workflow for senlenium test to AX images
-fixtures:
-  - selenium_remote:
-      template: selenium-server-ax
-      parameters:
+type: service_template
+subtype: container
+name: selenium_e2e_test
 inputs:
+  artifacts:
+  - from: "%%code%%"
+    path: "/src"
   parameters:
-    os:
-        default: ubuntu1604
-    browser:
-        default: chromelatest
     code:
-        default: "%%session.repo%%"
-steps:
-  - test:
-      template: selenium-test-base-ax
-      parameters:
-        selenium_ip: "%%fixtures.selenium_remote.ip%%"
+    selenium_ip:
+    app_ip:
+    browser:
+container:
+  resources:
+    mem_mib: 2048
+    cpu_cores: 0.4
+    disk_gb: 2
+  image: python:3.5.2
+  docker_options: '-e "APP_URL=http://%%app_ip%%:8000/index.html"'
+  command: sh -c 'pip3 install -r /src/selenium/tests/requirements.txt && mkdir -p /tmp/report && pytest --html=/tmp/report/index.html -vv /src/selenium/tests/test.py --remote %%selenium_ip%% --browser %%browser%% --capture=no'
+outputs:
+  artifacts:
+    report:
+      path: "/tmp/report"
+      meta_data:
+      - browsable
 
 ---
-type: workflow
-name: Selenium Standalone Test All AX Images
-description: This is the workflow for senlenium test
+type: container
+name: selenium-test-app
 inputs:
   parameters:
-    commit:
-      default: "%%session.commit%%"
-    repo:
-      default: "%%session.repo%%"
-steps:
-  - checkout:
-      template: axscm-checkout
-  - test:
-      template: Selenium Standalone Test One AX
-      parameters:
-        code: "%%steps.checkout.code%%"
-        os: $$[ubuntu1604,ubuntu1404]$$
-        browser: $$[chromelatest,chrome54,chrome53,chrome52,chrome51,chrome50,chrome49,firefoxlatest,firefox50,firefox49,firefox48,firefox47,firefox46,firefox45]$$
-        selenium_ip: "%%fixtures.selenium_remote.ip%%"
+    code:
+  artifacts:
+  - from: "%%code%%"
+    path: "/src"
+container:
+  resources:
+    mem_mib: 1024
+    cpu_cores: 0.1
+  image: python:3.5.2
+  command: sh -c 'cd /src/selenium/app && python -m http.server 8000'
+
+---
+type: service_template
+subtype: container
+name: selenium-server
+description: Base selenium container for selenium firefox and chrome
+inputs:
+  parameters:
+    browser:
+container:
+  resources:
+    mem_mib: 1024
+    cpu_cores: 0.1
+  image: "selenium/standalone-%%browser%%-debug:latest"
