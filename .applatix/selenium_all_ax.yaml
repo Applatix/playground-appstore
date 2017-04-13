@@ -9,6 +9,8 @@ inputs:
       default: "%%session.repo%%"
     browser:
       default: $$[chrome,firefox]$$
+    test_failure:
+      default: "false"
 steps:
 - checkout:
     template: "axscm-checkout"
@@ -24,6 +26,7 @@ inputs:
   parameters:
     code:
     browser:
+    test_failure:
 steps:
 - test:
     template: selenium-test-workflow
@@ -45,6 +48,7 @@ inputs:
   parameters:
     code:
     browser:
+    test_failure:
 fixtures:
 - selenium:
     template: "selenium-server"
@@ -79,13 +83,14 @@ inputs:
     selenium_ip:
     app_ip:
     browser:
+    test_failure:
 container:
   resources:
     mem_mib: 2048
     cpu_cores: 0.4
     disk_gb: 2
   image: python:3.5.2
-  docker_options: '-e "APP_URL=http://%%app_ip%%:8000/index.html"'
+  docker_options: '-e "APP_URL=http://%%app_ip%%:8000/index.html" -e "TEST_FAILURE=%%test_failure%%"'
   command: sh -c 'pip3 install -r /src/selenium/tests/requirements.txt && mkdir -p /tmp/report && pytest --html=/tmp/report/index.html -vv /src/selenium/tests/test.py --remote %%selenium_ip%% --browser %%browser%% --capture=no'
 outputs:
   artifacts:

@@ -59,6 +59,8 @@ def pytest_runtest_makereport(item, call):
     report = outcome.get_result()
     extra = getattr(report, 'extra', [])
     if report.when == 'call':
-        screenshot = driver.get_screenshot_as_base64()
-        extra.append(pytest_html.extras.image(screenshot, ''))
-        report.extra = extra
+        xfail = hasattr(report, 'wasxfail')
+        if (report.skipped and xfail) or (report.failed and not xfail):
+            screenshot = driver.get_screenshot_as_base64()
+            extra.append(pytest_html.extras.image(screenshot, ''))
+            report.extra = extra

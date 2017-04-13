@@ -6,6 +6,11 @@ actions:
   -
     name: test
     template: selenium-example-workflow
+  -
+    name: test_failure
+    template: selenium-example-workflow
+    parameters:
+      test_failure: "true"
 categories: ["devops", "promoted"]
 publish:
   branches:
