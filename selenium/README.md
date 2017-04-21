@@ -1,8 +1,8 @@
 ### Selenium
 
-The selenium test app which demonstrates how to:
+The Selenium test app and workflow that demonstrates how to:
 
-* run a Selenium test against a web application running in two web browsers (Chrome and Firefox) 
-* record a video that has screenshots of the test
-* convert the video into another file format
-* output a report of the test as an HTML file
+* Run a Selenium test against a web application running in two web browsers (Chrome and Firefox) 
+* Record a video that has screenshots of the running test
+* Convert the video into a universal file format
+* Output a report of the test as an HTML file
