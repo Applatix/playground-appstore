@@ -10,8 +10,7 @@ container:
   docker_options: "-e REDIS_URL=redis://kube-ops-view-redis:6379"
 
 ---
-type: service_template
-subtype: container
+type: container
 name: kube-ops-view-redis
 description: This deployment runs the redis service required for kube-ops-view
 container:
@@ -22,8 +21,7 @@ container:
 
 
 ---
-type: service_template
-subtype: deployment
+type: deployment
 name: kube-ops-view-main-deployment
 description: This creates the kube-ops-view-main deployment
 application:
@@ -48,8 +46,7 @@ containers:
       template: kube-ops-view-main
 
 ---
-type: service_template
-subtype: deployment
+type: deployment
 name: kube-ops-view-redis-deployent
 description: This creates the kube-ops-view-redis deployment
 application:
@@ -68,8 +65,7 @@ containers:
   - server:
       template: kube-ops-view-redis
 ---
-type: service_template
-subtype: workflow
+type: workflow
 name: kube-ops-view-workflow
 description: This is the workflow that deploys and runs kube-ops-view
 steps:

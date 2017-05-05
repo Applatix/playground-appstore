@@ -38,8 +38,7 @@ steps:
       video_input: "%%steps.test.video%%"
 
 ---
-type: service_template
-subtype: workflow
+type: workflow
 name: selenium-test-workflow
 inputs:
   artifacts:
@@ -71,8 +70,7 @@ outputs:
       from: "%%fixtures.vnc_recorder.video%%"
 
 ---
-type: service_template
-subtype: container
+type: container
 name: selenium_e2e_test
 inputs:
   artifacts:
@@ -116,8 +114,7 @@ container:
   command: sh -c 'cd /src/selenium/app && python -m http.server 8000'
 
 ---
-type: service_template
-subtype: container
+type: container
 name: selenium-server
 description: Base selenium container for selenium firefox and chrome
 inputs:
